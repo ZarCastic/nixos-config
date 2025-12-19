@@ -6,11 +6,6 @@
 	home.stateVersion = "25.11";
 	programs.zsh = { 
 		enable = true;
-		profileExtra = ''
-			if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then 
-				exec hyprland
-			fi
-		'';
 	};
 
 	programs.git = { 
@@ -19,4 +14,7 @@
 			{ path = "~/.gitconfig.local"; }
 		];
 	};
+
+	home.file.".config/hypr".source = ./config/hypr;
+	home.file.".config/waybar".source = ./config/waybar;
 }
