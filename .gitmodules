@@ -1,3 +1,6 @@
 [submodule "config/hypr"]
 	path = config/hypr
 	url = git@github.com:ZarCastic/hypr.git
+[submodule "config/config/waybar"]
+	path = config/config/waybar
+	url = git@github.com:ZarCastic/waybar-config.git
