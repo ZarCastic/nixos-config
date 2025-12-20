@@ -11,7 +11,7 @@
 		dots.url = "github:ZarCastic/dots";
 	};
 
-	outputs = { self, nixpkgs, home-manager, ...}: {
+	outputs = { self, nixpkgs, home-manager, dots,  ...}: {
 		nixosConfigurations.tobi-tower = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			modules = [

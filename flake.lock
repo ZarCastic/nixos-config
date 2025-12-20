@@ -1,5 +1,20 @@
 {
   "nodes": {
+    "dots": {
+      "locked": {
+        "lastModified": 1766190387,
+        "narHash": "sha256-jC5jzamvPtqd7LaIFIDh3Y54m7SuBZfJU3PUGKh/ujE=",
+        "owner": "ZarCastic",
+        "repo": "dots",
+        "rev": "d6fed37de5aa1c37e01dc9844f867c1fd305fb24",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ZarCastic",
+        "repo": "dots",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -37,6 +52,7 @@
     },
     "root": {
       "inputs": {
+        "dots": "dots",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
       }
