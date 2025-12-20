@@ -21,13 +21,13 @@
 		enable = true;
 		extraConfig = builtins.readFile "${dots}/.tmux.conf";
 	};
-
 	programs.git = { 
 		enable = true;
 		includes = [
 			{ path = "~/.gitconfig.local"; }
 		];
 	};
+
 
 
 	home.file.".p10k.zsh".source = "${dots}/.p10k.zsh";

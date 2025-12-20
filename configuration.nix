@@ -6,6 +6,8 @@
       ./hardware-configuration.nix
     ];
 
+
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -38,6 +40,12 @@
     xwayland.enable = true;
   };
 
+
+  programs.steam = { 
+    enable = true;
+    localNetworkGameTransfers.openFirewall = true;
+  };
+
   environment.systemPackages = with pkgs; [
     vim
     neovim 
@@ -53,6 +61,7 @@
   # system.copySystemConfiguration = true;
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  nixpkgs.config.allowUnfree = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
