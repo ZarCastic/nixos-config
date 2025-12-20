@@ -2,11 +2,11 @@
   "nodes": {
     "dots": {
       "locked": {
-        "lastModified": 1766190387,
-        "narHash": "sha256-jC5jzamvPtqd7LaIFIDh3Y54m7SuBZfJU3PUGKh/ujE=",
+        "lastModified": 1766190771,
+        "narHash": "sha256-PF7sjZ4RI6bWCEON34EchUQbhHa6nFbx3ak9ntoVSM0=",
         "owner": "ZarCastic",
         "repo": "dots",
-        "rev": "d6fed37de5aa1c37e01dc9844f867c1fd305fb24",
+        "rev": "df03d89e215db46daed04538a5162ba621386bf8",
         "type": "github"
       },
       "original": {
