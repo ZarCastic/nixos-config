@@ -40,6 +40,7 @@
   programs.gcc.enable = true;
   programs.obsidian.enable = true;
   programs.lazygit.enable = true;
+  programs.discord.enable = true;
 
   home.file.".p10k.zsh".source = "${dots}/.p10k.zsh";
   xdg.configFile."hypr".source = "${dots}/hypr";
