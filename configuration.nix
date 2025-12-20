@@ -89,6 +89,10 @@
     wofi
     hyprpaper
     kitty
+  ];
+
+  fonts.packages = with pkgs; [
+    nerdfonts
     monaspace
   ];
 
