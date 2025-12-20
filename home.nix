@@ -29,6 +29,7 @@
 	};
 
   programs.gcc.enable = true;
+  programs.obsidian.enable = true;
 
 
 	home.file.".p10k.zsh".source = "${dots}/.p10k.zsh";
