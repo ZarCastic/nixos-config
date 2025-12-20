@@ -45,6 +45,7 @@
     enable = true;
     localNetworkGameTransfers.openFirewall = true;
   };
+  programs.gamemode.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim
@@ -58,7 +59,29 @@
     kitty
   ];
 
-  # system.copySystemConfiguration = true;
+  fileSystems."/home/tobi/projects" = {
+    device = "/dev/disk/by-label/PROJECTS"; 
+    fsType = "ext4"; 
+    options = ["nofail"];
+  };
+
+  fileSystems."/home/tobi/games" = {
+    device = "/dev/disk/by-label/GAMES"; 
+    fsType = "ext4"; 
+    options = ["nofail"];
+  };
+
+  fileSystems."/home/tobi/data" = {
+    device = "/dev/disk/by-label/DataDisk"; 
+    fsType = "ntfs";
+    options = ["nofail"];
+  };
+
+  systemd.tmpfiles.rules = [ 
+    "d /home/tobi/projects 0755 tobi users -"
+    "d /home/tobi/games 0755 tobi users -"
+    "d /home/tobi/data 0755 tobi users -"
+  ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;
