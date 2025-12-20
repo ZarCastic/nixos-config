@@ -1,9 +1,14 @@
-{config, pkgs, dots, ...}:
+{config, pkgs, nixvim, dots, ...}:
 
 {
 	home.username = "tobi";
 	home.homeDirectory = "/home/tobi";
 	home.stateVersion = "25.11";
+
+  home.packages = [
+    nixvim.packages.x86_64-linux.default
+  ];
+
 	programs.zsh = { 
 		enable = true;
 		initContent = builtins.readFile "${dots}/zshrc";

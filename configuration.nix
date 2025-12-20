@@ -1,10 +1,10 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   hardware.graphics.enable = true;
 
@@ -14,7 +14,7 @@
 
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
     # Enable this if you have graphical corruption issues or application crashes after waking
-    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
+    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
     # of just the bare essentials.
     powerManagement.enable = false;
 
@@ -24,14 +24,14 @@
 
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of 
-    # supported GPUs is at: 
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
+    # Support is limited to the Turing and later architectures. Full list of
+    # supported GPUs is at:
+    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
     open = false;
 
     # Enable the Nvidia settings menu,
-	# accessible via `nvidia-settings`.
+    # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
@@ -53,7 +53,7 @@
     wayland = true;
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   users.users.tobi = {
     isNormalUser = true;
@@ -68,13 +68,12 @@
 
   programs.firefox.enable = true;
   programs.zsh.enable = true;
-  programs.hyprland = { 
+  programs.hyprland = {
     enable = true;
     xwayland.enable = true;
   };
 
-
-  programs.steam = { 
+  programs.steam = {
     enable = true;
     localNetworkGameTransfers.openFirewall = true;
   };
@@ -95,29 +94,39 @@
   fileSystems."/home/tobi/projects" = {
     device = "/dev/disk/by-label/PROJECTS";
     fsType = "ext4";
-    options = ["nofail"];
+    options = [ "nofail" ];
   };
 
   fileSystems."/home/tobi/games" = {
-    device = "/dev/disk/by-label/GAMES"; 
+    device = "/dev/disk/by-label/GAMES";
     fsType = "ext4";
-    options = ["nofail"];
+    options = [ "nofail" ];
   };
 
   fileSystems."/home/tobi/data" = {
-    device = "/dev/disk/by-label/DataDisk"; 
+    device = "/dev/disk/by-label/DataDisk";
     fsType = "ntfs";
-    options = ["nofail"];
+    options = [ "nofail" ];
   };
 
-  systemd.tmpfiles.rules = [ 
+  systemd.tmpfiles.rules = [
     "d /home/tobi/projects 0755 tobi users -"
     "d /home/tobi/games 0755 tobi users -"
     "d /home/tobi/data 0755 tobi users -"
   ];
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   nixpkgs.config.allowUnfree = true;
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    #   interval = { Weekday = 0; Hour = 0; Minute = 0; }; # for darwin
+    options = "--delete-older-than 30d";
+  };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
@@ -139,4 +148,3 @@
   system.stateVersion = "25.11"; # Did you read the comment?
 
 }
-
