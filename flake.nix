@@ -7,6 +7,8 @@
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		dots.url = "github:ZarCastic/dots";
 	};
 
 	outputs = { self, nixpkgs, home-manager, ...}: {
@@ -17,6 +19,7 @@
 				home-manager.nixosModules.home-manager 
 				{ 
 					home-manager = {
+						extraSpecialArgs = { inherit dots; };
 						useGlobalPkgs = true;
 						useUserPackages = true;
 						users.tobi = import ./home.nix;
