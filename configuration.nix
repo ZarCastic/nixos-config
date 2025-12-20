@@ -92,7 +92,6 @@
   ];
 
   fonts.packages = with pkgs; [
-    nerdfonts
     monaspace
   ];
 
