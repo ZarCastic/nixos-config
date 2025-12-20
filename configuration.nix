@@ -29,7 +29,7 @@
     ];
   };
 
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.zsh; # TODO should be managed by home-manager
 
   programs.firefox.enable = true;
   programs.zsh.enable = true;
@@ -45,6 +45,7 @@
     wget
     wezterm
     waybar
+    wofi
     hyprpaper
     kitty
   ];
