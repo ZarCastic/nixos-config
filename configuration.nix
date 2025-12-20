@@ -93,14 +93,14 @@
   ];
 
   fileSystems."/home/tobi/projects" = {
-    device = "/dev/disk/by-label/PROJECTS"; 
-    fsType = "ext4"; 
+    device = "/dev/disk/by-label/PROJECTS";
+    fsType = "ext4";
     options = ["nofail"];
   };
 
   fileSystems."/home/tobi/games" = {
     device = "/dev/disk/by-label/GAMES"; 
-    fsType = "ext4"; 
+    fsType = "ext4";
     options = ["nofail"];
   };
 
