@@ -89,6 +89,7 @@
     wofi
     hyprpaper
     kitty
+    monaspace
   ];
 
   fileSystems."/home/tobi/projects" = {
