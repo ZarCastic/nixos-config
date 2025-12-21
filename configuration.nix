@@ -97,6 +97,7 @@
     kitty
     networkmanager-openvpn
     networkmanagerapplet
+    pavucontrol
     proton-pass
     protonvpn-gui
     vim
