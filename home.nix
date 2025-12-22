@@ -68,6 +68,7 @@
       shellAliases = {
         rebuild-system = "sudo nixos-rebuild switch --flake ~/nixos-config";
         upgrade-system = "sudo nixos-rebuild switch --flake ~/nixos-config --upgrade";
+        nix-search = "nix --extra-experimental-features \"nix-command flakes\" search nixpkgs";
       };
     };
 
