@@ -46,9 +46,9 @@
           {
             pkg = pkgs.callPackage ./modules/obsidian/rollover-daily-todos.nix { };
           }
-          # {
-          #   pkg = pkgs.callPackage ./modules/obsidian/simple-todo.nix { };
-          # }
+          {
+            pkg = pkgs.callPackage ./modules/obsidian/simple-todo.nix { };
+          }
         ];
       };
       vaults = {
