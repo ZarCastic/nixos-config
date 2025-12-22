@@ -1,29 +1,37 @@
 {
   pkgs,
+  lib,
   pnpm,
   ...
 }:
 
+let
+  pnpm_compat = pkgs.pnpm_8;
+in
 pkgs.stdenv.mkDerivation rec {
-  pname = "obsidian.plugins.obsidian-git";
-  version = "2.35.2";
+  pname = "obsidian.plugins.rollover-daily-todos";
+  version = "1.2.0";
   src = pkgs.fetchFromGitHub {
-    owner = "Vinzent03";
-    repo = "obsidian-git";
+    owner = "lumoe";
+    repo = "obsidian-rollover-daily-todos";
     rev = version;
-    hash = "sha256-A3s9+fhHRc6YC/YObJWqIG8NfA638gMkmjQtoOifO8s=";
+    hash = "sha256-/r++FPIMRAmFrbxpCv02RDvHU3USaAa6MgQxR8RK1lQ=";
   };
+
+  patches = [ ./rollover-daily-todos.patch ];
 
   pnpmDeps = pkgs.fetchPnpmDeps {
     version = version;
     src = src;
     pname = pname;
     fetcherVersion = 3;
-    hash = "sha256-y+7ZlzpOlgzkSFkzDKFlD/RxaK3WbssQgIxf36oE63I=";
+    hash = "sha256-hXZWQ4LrIqebLL73uv+DX3lnKbHCTuSLfk79RNXIwAo=";
+    patches = [ ./rollover-daily-todos.patch ];
+    pnpm = pnpm_compat;
   };
 
   buildPhase = ''
-    runHook preBuild 
+    runHook preBuild
     pnpm run build
     runHook postBuild
   '';
@@ -31,8 +39,7 @@ pkgs.stdenv.mkDerivation rec {
   nativeBuildInputs = with pkgs; [
     nodejs
     pnpmConfigHook
-    typescript
-    pnpm
+    pnpm_compat
     npmHooks.npmInstallHook
   ];
 
@@ -40,6 +47,5 @@ pkgs.stdenv.mkDerivation rec {
     mkdir -p $out
     cp ./manifest.json $out/manifest.json
     cp ./main.js $out/main.js
-    cp ./styles.css $out/styles.css
   '';
 }
