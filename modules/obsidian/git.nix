@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 
 pkgs.stdenv.mkDerivation rec {
   pname = "obsidian.plugins.obsidian-git";

@@ -35,7 +35,11 @@
     obsidian = {
       enable = true;
       defaultSettings = {
-        # themes.Catpuccin.enable = true;
+        themes = [
+          {
+            pkg = pkgs.callPackage ./modules/obsidian/catppuccin-theme.nix { };
+          }
+        ];
         communityPlugins = [
           {
             pkg = pkgs.callPackage ./modules/obsidian/calendar.nix { };
