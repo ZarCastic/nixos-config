@@ -1,4 +1,9 @@
-{ nixvim, dots, ... }:
+{
+  pkgs,
+  nixvim,
+  dots,
+  ...
+}:
 
 {
   home.username = "tobi";
@@ -27,7 +32,31 @@
       ];
     };
     lazygit.enable = true;
-    obsidian.enable = true;
+    obsidian = {
+      enable = true;
+      defaultSettings = {
+        # themes.Catpuccin.enable = true;
+        communityPlugins = [
+          {
+            pkg = pkgs.callPackage ./modules/obsidian/calendar.nix { };
+          }
+          {
+            pkg = pkgs.callPackage ./modules/obsidian/git.nix { };
+          }
+          # {
+          #   pkg = pkgs.callPackage ./modules/obsidian/rollover-daily-todos.nix { };
+          # }
+          # {
+          #   pkg = pkgs.callPackage ./modules/obsidian/simple-todo.nix { };
+          # }
+        ];
+      };
+      vaults = {
+        Notes = {
+          enable = true;
+        };
+      };
+    };
     ripgrep.enable = true;
     tmux = {
       enable = true;
