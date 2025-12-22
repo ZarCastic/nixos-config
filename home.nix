@@ -78,6 +78,29 @@
 
   };
 
+  gtk = {
+    enable = true;
+    colorScheme = "dark";
+    cursorTheme = {
+      name = "Catppuccin-Macchiato-Blue";
+      package = pkgs.catppuccin-cursors.macchiatoBlue;
+    };
+
+    theme = {
+      name = "Catppuccin-Macchiato-Compact-Blue-dark";
+      package = pkgs.catppuccin-gtk.override {
+        size = "compact";
+        accents = [ "blue" ];
+        variant = "macchiato";
+      };
+    };
+
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-folders;
+    };
+  };
+
   home.file.".p10k.zsh".source = "${dots}/.p10k.zsh";
   xdg.configFile."hypr".source = "${dots}/hypr";
   xdg.configFile."waybar".source = "${dots}/waybar";
