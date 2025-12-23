@@ -47,6 +47,18 @@
     bemenu.enable = true;
     fzf.enable = true;
     gcc.enable = true;
+    ghostty = {
+      enable = true;
+      package = if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
+      enableZshIntegration = true;
+      enableBashIntegration = true;
+      enableFishIntegration = false;
+      settings = {
+        theme = "Catppuccin Macchiato";
+        font-family = "Monaspace Xenon Var";
+        font-feature = "liga,ss01,ss02,ss03,ss04";
+      };
+    };
     git = {
       enable = true;
       includes = [

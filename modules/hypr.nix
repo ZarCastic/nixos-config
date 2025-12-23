@@ -86,7 +86,7 @@ in
         vrr = 1;
       };
       "$mod" = "SUPER";
-      "$terminal" = "wezterm";
+      "$terminal" = "ghostty";
       "$menu" = "bemenu-run";
       exec-once = [
         "nm-applet"
