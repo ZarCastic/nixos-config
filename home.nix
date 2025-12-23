@@ -68,12 +68,47 @@
     };
     zsh = {
       enable = true;
-      initContent = builtins.readFile "${dots}/zshrc";
+      enableCompletion = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
+      autocd = true;
+      cdpath = [
+        "$HOME"
+        "$HOME/Projects"
+      ];
+      history = {
+        append = true;
+        share = true;
+        expireDuplicatesFirst = true;
+        ignoreAllDups = true;
+        findNoDups = true;
+        ignoreDups = true;
+        ignoreSpace = true;
+        saveNoDups = true;
+      };
+      siteFunctions = {
+        mkcd = ''
+          mkdir -p "$1" && cd "$1"
+        '';
+      };
       shellAliases = {
+        k = "exit";
         rebuild-system = "sudo nixos-rebuild switch --flake ~/nixos-config";
         upgrade-system = "sudo nixos-rebuild switch --flake ~/nixos-config --upgrade";
         nix-search = "nix --extra-experimental-features \"nix-command flakes\" search nixpkgs";
       };
+      plugins = [
+        {
+          name = "zsh-powerlevel10k";
+          src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
+          file = "powerlevel10k.zsh-theme";
+        }
+        {
+          name = "powerlevel10k-config";
+          src = "${dots}";
+          file = ".p10k.zsh";
+        }
+      ];
     };
 
   };
@@ -101,7 +136,7 @@
     };
   };
 
-  home.file.".p10k.zsh".source = "${dots}/.p10k.zsh";
+  # home.file.".p10k.zsh".source = "${dots}/.p10k.zsh";
   xdg.configFile."hypr".source = "${dots}/hypr";
   xdg.configFile."waybar".source = "${dots}/waybar";
   xdg.configFile."tmux/tmux.reset.conf".source = "${dots}/.config/tmux/tmux.reset.conf";

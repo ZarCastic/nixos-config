@@ -107,6 +107,7 @@
     wireguard-tools
     wofi
   ];
+  environment.pathsToLink = [ "/share/zsh" ];
 
   fonts.packages = with pkgs; [
     monaspace
