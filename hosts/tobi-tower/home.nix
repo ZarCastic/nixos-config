@@ -18,7 +18,7 @@
 
   imports = [
     dms.homeModules.dankMaterialShell.default
-    ./modules/hypr.nix
+    ./../../modules/hypr.nix
   ];
 
   programs = {
@@ -71,21 +71,21 @@
       defaultSettings = {
         themes = [
           {
-            pkg = pkgs.callPackage ./modules/obsidian/catppuccin-theme.nix { };
+            pkg = pkgs.callPackage ./../../modules/obsidian/catppuccin-theme.nix { };
           }
         ];
         communityPlugins = [
           {
-            pkg = pkgs.callPackage ./modules/obsidian/calendar.nix { };
+            pkg = pkgs.callPackage ./../../modules/obsidian/calendar.nix { };
           }
           {
-            pkg = pkgs.callPackage ./modules/obsidian/git.nix { };
+            pkg = pkgs.callPackage ./../../modules/obsidian/git.nix { };
           }
           {
-            pkg = pkgs.callPackage ./modules/obsidian/rollover-daily-todos.nix { };
+            pkg = pkgs.callPackage ./../../modules/obsidian/rollover-daily-todos.nix { };
           }
           {
-            pkg = pkgs.callPackage ./modules/obsidian/simple-todo.nix { };
+            pkg = pkgs.callPackage ./../../modules/obsidian/simple-todo.nix { };
           }
         ];
       };

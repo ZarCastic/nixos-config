@@ -32,7 +32,8 @@
         system = "x86_64-linux";
         specialArgs = { inherit dms; };
         modules = [
-          ./configuration.nix
+          ./hosts/tobi-tower/configuration.nix
+          ./modules/nixos.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -43,7 +44,7 @@
               };
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.tobi = import ./home.nix;
+              users.tobi = import ./hosts/tobi-tower/home.nix;
               backupFileExtension = "backup";
             };
           }
