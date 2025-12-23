@@ -10,21 +10,27 @@
 
     nixvim.url = "github:dc-tec/nixvim";
 
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     dots.url = "github:ZarCastic/dots";
   };
 
   outputs =
     {
-      self,
       nixpkgs,
       home-manager,
       nixvim,
+      dms,
       dots,
       ...
     }:
     {
       nixosConfigurations.tobi-tower = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit dms; };
         modules = [
           ./configuration.nix
           home-manager.nixosModules.home-manager
@@ -33,6 +39,7 @@
               extraSpecialArgs = {
                 inherit dots;
                 inherit nixvim;
+                inherit dms;
               };
               useGlobalPkgs = true;
               useUserPackages = true;

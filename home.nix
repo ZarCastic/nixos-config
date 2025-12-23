@@ -2,6 +2,7 @@
   pkgs,
   nixvim,
   dots,
+  dms,
   ...
 }:
 
@@ -12,10 +13,31 @@
 
   home.packages = [
     nixvim.packages.x86_64-linux.default
+    pkgs.wl-clipboard
+  ];
+
+  imports = [
+    dms.homeModules.dankMaterialShell.default
+    ./modules/hypr.nix
   ];
 
   programs = {
     bat.enable = true;
+    dankMaterialShell = {
+      enable = true;
+      default.settings = {
+        systemd = {
+          enable = true;
+          restartIfChanged = true;
+        };
+        systemMonitoring = true;
+        clipboard = true;
+        VPN = true;
+        dynamicTheming = false;
+        audioWavelength = true;
+        calendarEvents = true;
+      };
+    };
     direnv = {
       enable = true;
       enableZshIntegration = true;
@@ -140,8 +162,5 @@
     };
   };
 
-  # home.file.".p10k.zsh".source = "${dots}/.p10k.zsh";
-  xdg.configFile."hypr".source = "${dots}/hypr";
-  xdg.configFile."waybar".source = "${dots}/waybar";
   xdg.configFile."tmux/tmux.reset.conf".source = "${dots}/.config/tmux/tmux.reset.conf";
 }

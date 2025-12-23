@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  dms,
+  ...
+}:
 
 {
   imports = [
@@ -54,9 +59,11 @@
   time.timeZone = "Europe/Berlin";
 
   # services.pulseaudio.enable = true;
-  services.displayManager.gdm = {
+  services.displayManager.dms-greeter = {
     enable = true;
-    wayland = true;
+    compositor.name = "hyprland";
+    configHome = "/home/tobi";
+    package = dms.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
