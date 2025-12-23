@@ -2,7 +2,6 @@
   pkgs,
   nixvim,
   dots,
-  dms,
   ...
 }:
 
@@ -17,34 +16,18 @@
   ];
 
   imports = [
-    dms.homeModules.dankMaterialShell.default
-    ./../../modules/hypr.nix
+    # ./../../modules/home/common.nix
+    ./../../modules/home/hypr.nix
+    ./../../modules/home/obsidian
   ];
 
   programs = {
     bat.enable = true;
-    dankMaterialShell = {
-      enable = true;
-      default.settings = {
-        systemd = {
-          enable = true;
-          restartIfChanged = true;
-        };
-        systemMonitoring = true;
-        clipboard = true;
-        VPN = true;
-        dynamicTheming = false;
-        audioWavelength = true;
-        calendarEvents = true;
-      };
-    };
     direnv = {
       enable = true;
       enableZshIntegration = true;
     };
-    discord.enable = true;
     eza.enable = true;
-    bemenu.enable = true;
     fzf.enable = true;
     gcc.enable = true;
     ghostty = {
@@ -66,35 +49,6 @@
       ];
     };
     lazygit.enable = true;
-    obsidian = {
-      enable = true;
-      defaultSettings = {
-        themes = [
-          {
-            pkg = pkgs.callPackage ./../../modules/obsidian/catppuccin-theme.nix { };
-          }
-        ];
-        communityPlugins = [
-          {
-            pkg = pkgs.callPackage ./../../modules/obsidian/calendar.nix { };
-          }
-          {
-            pkg = pkgs.callPackage ./../../modules/obsidian/git.nix { };
-          }
-          {
-            pkg = pkgs.callPackage ./../../modules/obsidian/rollover-daily-todos.nix { };
-          }
-          {
-            pkg = pkgs.callPackage ./../../modules/obsidian/simple-todo.nix { };
-          }
-        ];
-      };
-      vaults = {
-        Notes = {
-          enable = true;
-        };
-      };
-    };
     ripgrep.enable = true;
     tmux = {
       enable = true;

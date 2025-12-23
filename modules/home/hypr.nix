@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, dms, ... }:
 
 let
   workspaces = builtins.concatLists (
@@ -19,6 +19,11 @@ let
   );
 in
 {
+
+  imports = [
+    dms.homeModules.dankMaterialShell.default
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -120,5 +125,25 @@ in
         "$mod, mouse:273, resizewindow"
       ];
     };
+  };
+
+  programs = {
+    dankMaterialShell = {
+      enable = true;
+      default.settings = {
+        systemd = {
+          enable = true;
+          restartIfChanged = true;
+        };
+        systemMonitoring = true;
+        clipboard = true;
+        VPN = true;
+        dynamicTheming = false;
+        audioWavelength = true;
+        calendarEvents = true;
+      };
+    };
+    discord.enable = true;
+    bemenu.enable = true;
   };
 }

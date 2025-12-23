@@ -12,37 +12,33 @@
 
   networking.hostName = "tobi-tower";
 
+  # nvidia/specifics for tower
   hardware.graphics.enable = true;
   hardware.nvidia = {
-    modesetting.enable = true;
+    modesetting.enable = true; # required
     powerManagement.enable = false;
     powerManagement.finegrained = false;
     open = false; # only available for newer GPUs
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
-
   services.xserver.videoDrivers = [ "nvidia" ];
 
   users.users.tobi = {
     isNormalUser = true;
     extraGroups = [
-      "wheel"
-      "networkmanager"
-    ];
-    packages = with pkgs; [
-      tree
-      spotify
+      "wheel" # allow sudo
+      "networkmanager" # required for vpn
     ];
   };
 
   users.defaultUserShell = pkgs.zsh; # TODO should be managed by home-manager
-  environment.pathsToLink = [ "/share/zsh" ];
+  environment.pathsToLink = [ "/share/zsh" ]; # for completions
 
   programs.firefox.enable = true;
   programs.zsh.enable = true;
 
-  # hypr
+  # hypr related
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -73,6 +69,8 @@
     pavucontrol
     proton-pass
     protonvpn-gui
+    spotify
+    tree
     vim
     waybar
     wezterm

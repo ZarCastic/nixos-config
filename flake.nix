@@ -33,7 +33,7 @@
         specialArgs = { inherit dms; };
         modules = [
           ./hosts/tobi-tower/configuration.nix
-          ./modules/nixos.nix
+          ./modules/nixos
           home-manager.nixosModules.home-manager
           {
             home-manager = {
