@@ -69,6 +69,10 @@
     zsh = {
       enable = true;
       enableCompletion = true;
+      oh-my-zsh = {
+        enable = true;
+        plugins = [ "git" ];
+      };
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       autocd = true;
