@@ -53,7 +53,14 @@ in
       };
       dwindle = {
         pseudotile = true;
-        preserve_split = true;
+        force_split = 2;
+        use_active_for_splits = false;
+        preserve_split = false;
+        smart_split = false;
+      };
+      master = {
+        allow_small_split = true;
+        new_status = "inherit";
       };
       input = {
         kb_layout = "eu";
@@ -95,7 +102,7 @@ in
         border_size = 2;
         resize_on_border = false;
         allow_tearing = true;
-        layout = "dwindle";
+        layout = "master";
       };
       bind = [
         "$mod SHIFT, E, exit,"
