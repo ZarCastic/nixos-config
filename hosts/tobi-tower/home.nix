@@ -23,11 +23,17 @@
 
   programs = {
     bat.enable = true;
+    btop.enable = true;
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+    };
     direnv = {
       enable = true;
       enableZshIntegration = true;
     };
     eza.enable = true;
+    fd.enable = true;
     fzf.enable = true;
     gcc.enable = true;
     ghostty = {
@@ -54,6 +60,7 @@
       enable = true;
       extraConfig = builtins.readFile "${dots}/.tmux.conf";
     };
+    wofi.enable = true;
     zsh = {
       enable = true;
       enableCompletion = true;
@@ -103,6 +110,21 @@
       ];
     };
 
+  };
+
+  services = {
+    cliphist.enable = true;
+    flameshot = {
+      enable = true;
+      settings = {
+        General = {
+          showStartupLaunchMessage = false;
+          useGrimAdapter = true;
+          disabledGrimWarning = true;
+        };
+      };
+
+    };
   };
 
   gtk = {

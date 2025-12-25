@@ -94,9 +94,9 @@ in
       "$terminal" = "ghostty";
       "$menu" = "bemenu-run";
       exec-once = [
-        "nm-applet"
         "protonvpn-app"
         "proton-pass"
+        "wl-paste --watch cliphist store"
       ];
       general = {
         gaps_in = 5;
@@ -111,6 +111,7 @@ in
       bind = [
         "$mod SHIFT, E, exit,"
         "$mod SHIFT, Q, killactive,"
+        "$mod, V, exec, cliphist list | wofi --dmenu --pre-display-cmd \"echo '%s' | cut -f 2\" | cliphist decode | wl-copy"
         "$mod, Return, exec, $terminal"
         "$mod, Space, togglefloating,"
         "$mod, D, exec, $menu"

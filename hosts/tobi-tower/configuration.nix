@@ -32,11 +32,14 @@
     ];
   };
 
+  programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh; # TODO should be managed by home-manager
+  fonts.packages = with pkgs; [
+    monaspace
+  ];
   environment.pathsToLink = [ "/share/zsh" ]; # for completions
 
   programs.firefox.enable = true;
-  programs.zsh.enable = true;
 
   # hypr related
   programs.hyprland = {
@@ -64,11 +67,13 @@
     git
     hyprpaper
     kitty
+    libnotify
     networkmanager-openvpn
     networkmanagerapplet
     pavucontrol
     proton-pass
     protonvpn-gui
+    signal-desktop
     spotify
     tree
     vim
@@ -77,10 +82,6 @@
     wget
     wireguard-tools
     wofi
-  ];
-
-  fonts.packages = with pkgs; [
-    monaspace
   ];
 
 }
