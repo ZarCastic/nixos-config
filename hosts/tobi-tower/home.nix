@@ -1,222 +1,10 @@
 {
   pkgs,
   nixvim,
-  lib,
   dots,
   ...
 }:
 
-let
-  git_aliases = {
-    g = "git";
-    ga = "git add";
-    gaa = "git add --all";
-    gam = "git am";
-    gama = "git am --abort";
-    gamc = "git am --continue";
-    gams = "git am --skip";
-    gamscp = "git am --show-current-patch";
-    gap = "git apply";
-    gapa = "git add --patch";
-    gapt = "git apply --3way";
-    gau = "git add --update";
-    gav = "git add --verbose";
-    gb = "git branch";
-    gbD = "git branch --delete --force";
-    gba = "git branch --all";
-    gbd = "git branch --delete";
-    gbg = "LANG=C git branch -vv | grep \": gone\]\"";
-    gbgD = "LANG=C git branch --no-color -vv | grep \": gone\]\" | cut -c 3- | awk \'\"\'{print $1}\'\"\' | xargs git branch -D";
-    gbgd = "LANG=C git branch --no-color -vv | grep \": gone\]\" | cut -c 3- | awk \'\"\'{print $1}\'\"\' | xargs git branch -d";
-    gbl = "git blame -w";
-    gbm = "git branch --move";
-    gbnm = "git branch --no-merged";
-    gbr = "git branch --remote";
-    gbs = "git bisect";
-    gbsb = "git bisect bad";
-    gbsg = "git bisect good";
-    gbsn = "git bisect new";
-    gbso = "git bisect old";
-    gbsr = "git bisect reset";
-    gbss = "git bisect start";
-    gc = "git commit --verbose";
-    "gc!" = "git commit --verbose --amend";
-    gcB = "git checkout -B";
-    gca = "git commit --verbose --all";
-    "gca!" = "git commit --verbose --all --amend";
-    gcam = "git commit --all --message";
-    "gcan!" = "git commit --verbose --all --no-edit --amend";
-    "gcann!" = "git commit --verbose --all --date=now --no-edit --amend";
-    "gcans!" = "git commit --verbose --all --signoff --no-edit --amend";
-    gcas = "git commit --all --signoff";
-    gcasm = "git commit --all --signoff --message";
-    gcb = "git checkout -b";
-    gcd = "git checkout $(git_develop_branch)";
-    gcf = "git config --list";
-    gcfu = "git commit --fixup";
-    gcl = "git clone --recurse-submodules";
-    gclean = "git clean --interactive -d";
-    gclf = "git clone --recursive --shallow-submodules --filter=blob:none --also-filter-submodules";
-    gcm = "git checkout $(git_main_branch)";
-    gcmsg = "git commit --message";
-    gcn = "git commit --verbose --no-edit";
-    "gcn!" = "git commit --verbose --no-edit --amend";
-    gco = "git checkout";
-    gcor = "git checkout --recurse-submodules";
-    gcount = "git shortlog --summary --numbered";
-    gcp = "git cherry-pick";
-    gcpa = "git cherry-pick --abort";
-    gcpc = "git cherry-pick --continue";
-    gcs = "git commit --gpg-sign";
-    gcsm = "git commit --signoff --message";
-    gcss = "git commit --gpg-sign --signoff";
-    gcssm = "git commit --gpg-sign --signoff --message";
-    gd = "git diff";
-    gdca = "git diff --cached";
-    gdct = "git describe --tags $(git rev-list --tags --max-count=1)";
-    gdcw = "git diff --cached --word-diff";
-    gds = "git diff --staged";
-    gdt = "git diff-tree --no-commit-id --name-only -r";
-    gdup = "git diff @{upstream}";
-    gdw = "git diff --word-diff";
-    gf = "git fetch";
-    gfa = "git fetch --all --tags --prune --jobs=10";
-    gfg = "git ls-files | grep";
-    gfo = "git fetch origin";
-    gg = "git gui citool";
-    gga = "git gui citool --amend";
-    ggpull = "git pull origin \"$(git_current_branch)\"";
-    ggpush = "git push origin \"$(git_current_branch)\"";
-    ggsup = "git branch --set-upstream-to=origin/$(git_current_branch)";
-    ghh = "git help";
-    gignore = "git update-index --assume-unchanged";
-    gignored = "git ls-files -v | grep \"^[[:lower:]]\"";
-    git-svn-dcommit-push = "git svn dcommit && git push github $(git_main_branch):svntrunk";
-    gk = "\gitk --all --branches &!";
-    gke = "\gitk --all $(git log --walk-reflogs --pretty=%h) &!";
-    gl = "git pull";
-    glg = "git log --stat";
-    glgg = "git log --graph";
-    glgga = "git log --graph --decorate --all";
-    glgm = "git log --graph --max-count=10";
-    glgp = "git log --stat --patch";
-    glo = "git log --oneline --decorate";
-    glod = "git log --graph --pretty=\"%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset\"";
-    glods = "git log --graph --pretty=\"%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset\" --date=short";
-    glog = "git log --oneline --decorate --graph";
-    gloga = "git log --oneline --decorate --graph --all";
-    glol = "git log --graph --pretty=\"%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset\"";
-    glola = "git log --graph --pretty=\"%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset\" --all";
-    glols = "git log --graph --pretty=\"%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset\" --stat";
-    gluc = "git pull upstream $(git_current_branch)";
-    glum = "git pull upstream $(git_main_branch)";
-    gm = "git merge";
-    gma = "git merge --abort";
-    gmc = "git merge --continue";
-    gmff = "git merge --ff-only";
-    gmom = "git merge origin/$(git_main_branch)";
-    gms = "git merge --squash";
-    gmtl = "git mergetool --no-prompt";
-    gmtlvim = "git mergetool --no-prompt --tool=vimdiff";
-    gmum = "git merge upstream/$(git_main_branch)";
-    gp = "git push";
-    gpd = "git push --dry-run";
-    gpf = "git push --force-with-lease --force-if-includes";
-    "gpf!" = "git push --force";
-    gpoat = "git push origin --all && git push origin --tags";
-    gpod = "git push origin --delete";
-    gpr = "git pull --rebase";
-    gpra = "git pull --rebase --autostash";
-    gprav = "git pull --rebase --autostash -v";
-    gpristine = "git reset --hard && git clean --force -dfx";
-    gprom = "git pull --rebase origin $(git_main_branch)";
-    gpromi = "git pull --rebase=interactive origin $(git_main_branch)";
-    gprum = "git pull --rebase upstream $(git_main_branch)";
-    gprumi = "git pull --rebase=interactive upstream $(git_main_branch)";
-    gprv = "git pull --rebase -v";
-    gpsup = "git push --set-upstream origin $(git_current_branch)";
-    gpsupf = "git push --set-upstream origin $(git_current_branch) --force-with-lease --force-if-includes";
-    gpu = "git push upstream";
-    gpv = "git push --verbose";
-    gr = "git remote";
-    gra = "git remote add";
-    grb = "git rebase";
-    grba = "git rebase --abort";
-    grbc = "git rebase --continue";
-    grbd = "git rebase $(git_develop_branch)";
-    grbi = "git rebase --interactive";
-    grbm = "git rebase $(git_main_branch)";
-    grbo = "git rebase --onto";
-    grbom = "git rebase origin/$(git_main_branch)";
-    grbs = "git rebase --skip";
-    grbum = "git rebase upstream/$(git_main_branch)";
-    grev = "git revert";
-    greva = "git revert --abort";
-    grevc = "git revert --continue";
-    grf = "git reflog";
-    grh = "git reset";
-    grhh = "git reset --hard";
-    grhk = "git reset --keep";
-    grhs = "git reset --soft";
-    grm = "git rm";
-    grmc = "git rm --cached";
-    grmv = "git remote rename";
-    groh = "git reset origin/$(git_current_branch) --hard";
-    grrm = "git remote remove";
-    grs = "git restore";
-    grset = "git remote set-url";
-    grss = "git restore --source";
-    grst = "git restore --staged";
-    grt = "cd \"$(git rev-parse --show-toplevel || echo .)\"";
-    gru = "git reset --";
-    grup = "git remote update";
-    grv = "git remote --verbose";
-    gsb = "git status --short --branch";
-    gsd = "git svn dcommit";
-    gsh = "git show";
-    gsi = "git submodule init";
-    gsps = "git show --pretty=short --show-signature";
-    gsr = "git svn rebase";
-    gss = "git status --short";
-    gst = "git status";
-    gsta = "git stash push";
-    gstaa = "git stash apply";
-    gstall = "git stash --all";
-    gstc = "git stash clear";
-    gstd = "git stash drop";
-    gstl = "git stash list";
-    gstp = "git stash pop";
-    gsts = "git stash show --patch";
-    gsu = "git submodule update";
-    gsw = "git switch";
-    gswc = "git switch --create";
-    gswd = "git switch $(git_develop_branch)";
-    gswm = "git switch $(git_main_branch)";
-    gta = "git tag --annotate";
-    gtl = "gtl(){ git tag --sort=-v:refname -n --list \"$1*\" }; noglob gtl";
-    gts = "git tag --sign";
-    gtv = "git tag | sort -V";
-    gunignore = "git update-index --no-assume-unchanged";
-    gunwip = "git rev-list --max-count=1 --format=\"%s\" HEAD | grep -q \"\--wip--\" && git reset HEAD~1";
-    gwch = "git log --patch --abbrev-commit --pretty=medium --raw";
-    gwip = "git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign --message \"--wip-- [skip ci]\"";
-    gwipe = "git reset --hard && git clean --force -df";
-    gwt = "git worktree";
-    gwta = "git worktree add";
-    gwtls = "git worktree list";
-    gwtmv = "git worktree move";
-    gwtrm = "git worktree remove";
-  };
-  nixos_aliases = {
-    rebuild-system = "sudo nixos-rebuild switch --flake ~/nixos-config";
-    upgrade-system = "sudo nixos-rebuild switch --flake ~/nixos-config --upgrade";
-    nix-search = "nix --extra-experimental-features \"nix-command flakes\" search nixpkgs";
-  };
-  sanity_aliases = {
-    k = "exit";
-    diff = "delta";
-  };
-in
 {
   home.username = "tobi";
   home.homeDirectory = "/home/tobi";
@@ -231,6 +19,7 @@ in
     # ./../../modules/home/common.nix
     ./../../modules/home/hypr.nix
     ./../../modules/home/obsidian
+    ./../../modules/home/zsh
   ];
 
   programs = {
@@ -256,7 +45,7 @@ in
       enableFishIntegration = false;
       settings = {
         font-family = "Monaspace Xenon Var";
-        font-feature = "liga,ss01,ss02,ss03,ss04";
+        font-feature = "liga,ss01,ss02,ss03,ss04,ss05,ss06,ss07,ss08,ss09,ss10";
       };
     };
     git = {
@@ -272,51 +61,6 @@ in
       extraConfig = builtins.readFile "${dots}/.tmux.conf";
     };
     wofi.enable = true;
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-      autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
-      autocd = true;
-      cdpath = [
-        "$HOME"
-        "$HOME/Projects"
-      ];
-      history = {
-        append = true;
-        share = true;
-        expireDuplicatesFirst = true;
-        ignoreAllDups = true;
-        findNoDups = true;
-        ignoreDups = true;
-        ignoreSpace = true;
-        saveNoDups = true;
-      };
-      siteFunctions = {
-        mkcd = ''
-          mkdir -p "$1" && cd "$1"
-        '';
-      };
-      shellAliases = lib.mergeAttrsList [
-        git_aliases
-        nixos_aliases
-        sanity_aliases
-      ];
-
-      plugins = [
-        {
-          name = "zsh-powerlevel10k";
-          src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
-          file = "powerlevel10k.zsh-theme";
-        }
-        {
-          name = "powerlevel10k-config";
-          src = "${dots}";
-          file = ".p10k.zsh";
-        }
-      ];
-    };
-
   };
 
   services = {
@@ -333,6 +77,4 @@ in
 
     };
   };
-
-  # xdg.configFile."tmux/tmux.reset.conf".source = "${dots}/.config/tmux/tmux.reset.conf";
 }
