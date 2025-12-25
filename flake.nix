@@ -15,7 +15,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dots.url = "github:ZarCastic/dots";
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,7 +28,6 @@
       nixvim,
       dms,
       stylix,
-      dots,
       ...
     }:
     {
@@ -44,7 +42,6 @@
           {
             home-manager = {
               extraSpecialArgs = {
-                inherit dots;
                 inherit nixvim;
                 inherit dms;
               };

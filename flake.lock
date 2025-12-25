@@ -112,21 +112,6 @@
         "type": "github"
       }
     },
-    "dots": {
-      "locked": {
-        "lastModified": 1766433879,
-        "narHash": "sha256-671+FepaSM9n1ZHupla0NuU5ooMgOn8UsIPKk/QuxhE=",
-        "owner": "ZarCastic",
-        "repo": "dots",
-        "rev": "bd449e90d6ac3480be4f432d43bac23503ece886",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ZarCastic",
-        "repo": "dots",
-        "type": "github"
-      }
-    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
@@ -559,7 +544,6 @@
     "root": {
       "inputs": {
         "dms": "dms",
-        "dots": "dots",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",

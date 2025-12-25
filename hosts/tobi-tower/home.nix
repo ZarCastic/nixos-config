@@ -1,7 +1,6 @@
 {
   pkgs,
   nixvim,
-  dots,
   ...
 }:
 
@@ -20,6 +19,7 @@
     ./../../modules/home/hypr.nix
     ./../../modules/home/obsidian
     ./../../modules/home/zsh
+    ./../../modules/home/tmux
   ];
 
   programs = {
@@ -56,10 +56,6 @@
     };
     lazygit.enable = true;
     ripgrep.enable = true;
-    tmux = {
-      enable = true;
-      extraConfig = builtins.readFile "${dots}/.tmux.conf";
-    };
     wofi.enable = true;
   };
 
@@ -74,7 +70,6 @@
           disabledGrimWarning = true;
         };
       };
-
     };
   };
 }
