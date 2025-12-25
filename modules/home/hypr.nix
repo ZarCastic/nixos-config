@@ -87,6 +87,7 @@ in
         "protonvpn-app"
         "proton-pass"
         "wl-paste --watch cliphist store"
+        "tmux start-server"
       ];
       general = {
         gaps_in = 5;

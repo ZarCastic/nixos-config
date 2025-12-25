@@ -21,7 +21,13 @@
       }
       tmuxPlugins.yank
       tmuxPlugins.sensible
-      tmuxPlugins.tmux-sessionx
+      tmuxPlugins.tmux-fzf
+      {
+        plugin = tmuxPlugins.tmux-sessionx;
+        extraConfig = ''
+          set -g @sessionx-bind 'o'
+        '';
+      }
     ];
     escapeTime = 0;
     historyLimit = 1000000;
