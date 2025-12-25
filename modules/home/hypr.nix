@@ -50,16 +50,6 @@ in
           popups = true;
           popups_ignorealpha = 0.2;
         };
-
-        shadow = {
-          enabled = true;
-          color = "rgba(00000055)";
-          ignore_window = true;
-          offset = "0 15";
-          range = 100;
-          render_power = 2;
-          scale = 0.97;
-        };
       };
       dwindle = {
         pseudotile = true;
@@ -102,8 +92,6 @@ in
         gaps_in = 5;
         gaps_out = 7;
         border_size = 2;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
         resize_on_border = false;
         allow_tearing = true;
         layout = "dwindle";

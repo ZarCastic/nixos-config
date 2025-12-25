@@ -5,14 +5,6 @@
     obsidian = {
       enable = true;
       defaultSettings = {
-        appearance = {
-          theme = "obsidian";
-        };
-        themes = [
-          {
-            pkg = pkgs.callPackage ./catppuccin-theme.nix { };
-          }
-        ];
         corePlugins = [
           "backlink"
           "bookmarks"

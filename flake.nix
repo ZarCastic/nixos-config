@@ -16,6 +16,10 @@
     };
 
     dots.url = "github:ZarCastic/dots";
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -24,6 +28,7 @@
       home-manager,
       nixvim,
       dms,
+      stylix,
       dots,
       ...
     }:
@@ -34,6 +39,7 @@
         modules = [
           ./hosts/tobi-tower/configuration.nix
           ./modules/nixos
+          stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           {
             home-manager = {

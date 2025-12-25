@@ -255,7 +255,6 @@ in
       enableBashIntegration = true;
       enableFishIntegration = false;
       settings = {
-        theme = "Catppuccin Macchiato";
         font-family = "Monaspace Xenon Var";
         font-feature = "liga,ss01,ss02,ss03,ss04";
       };
@@ -335,28 +334,5 @@ in
     };
   };
 
-  gtk = {
-    enable = true;
-    colorScheme = "dark";
-    cursorTheme = {
-      name = "Catppuccin-Macchiato-Blue";
-      package = pkgs.catppuccin-cursors.macchiatoBlue;
-    };
-
-    theme = {
-      name = "Catppuccin-Macchiato-Compact-Blue-dark";
-      package = pkgs.catppuccin-gtk.override {
-        size = "compact";
-        accents = [ "blue" ];
-        variant = "macchiato";
-      };
-    };
-
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-folders;
-    };
-  };
-
-  xdg.configFile."tmux/tmux.reset.conf".source = "${dots}/.config/tmux/tmux.reset.conf";
+  # xdg.configFile."tmux/tmux.reset.conf".source = "${dots}/.config/tmux/tmux.reset.conf";
 }
