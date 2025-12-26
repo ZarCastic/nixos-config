@@ -26,6 +26,7 @@
           "slash-command"
           "slides"
           "switcher"
+          "sync"
           "tag-pane"
           "templates"
           "word-count"
