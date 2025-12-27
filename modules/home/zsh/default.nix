@@ -14,7 +14,7 @@ in
     autocd = true;
     cdpath = [
       "$HOME"
-      "$HOME/Projects"
+      "$HOME/projects"
     ];
     history = {
       append = true;
