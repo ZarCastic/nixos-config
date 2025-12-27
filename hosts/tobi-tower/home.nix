@@ -1,6 +1,5 @@
 {
   pkgs,
-  nixvim,
   ...
 }:
 
@@ -10,7 +9,6 @@
   home.stateVersion = "25.11";
 
   home.packages = [
-    nixvim.packages.x86_64-linux.default
     pkgs.wl-clipboard
   ];
 

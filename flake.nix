@@ -8,8 +8,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim.url = "github:dc-tec/nixvim";
-
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,13 +17,18 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nvf = {
+      url = "github:NotAShelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       nixpkgs,
       home-manager,
-      nixvim,
+      nvf,
       dms,
       stylix,
       ...
@@ -38,11 +41,12 @@
           ./hosts/tobi-tower/configuration.nix
           ./modules/nixos
           stylix.nixosModules.stylix
+          nvf.nixosModules.default
+          ./modules/nvf
           home-manager.nixosModules.home-manager
           {
             home-manager = {
               extraSpecialArgs = {
-                inherit nixvim;
                 inherit dms;
               };
               useGlobalPkgs = true;
