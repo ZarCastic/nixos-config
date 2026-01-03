@@ -13,6 +13,8 @@
       spellcheck = {
         enable = true;
         programmingWordlist.enable = true;
+        languages = ["en"];
+        vim-dirtytalk.enable = true;
       };
 
       lsp = {
@@ -196,7 +198,7 @@
       };
 
       notes = {
-        obsidian.enable = true;
+        # obsidian.enable = true;
         neorg.enable = false;
         orgmode.enable = false;
         mind-nvim.enable = false;
@@ -214,7 +216,7 @@
         borders.enable = true;
         noice.enable = true;
         colorizer.enable = true;
-        modes-nvim.enable = true; # the theme looks terrible with catppuccin
+        modes-nvim.enable = false; # the theme looks terrible with catppuccin
         illuminate.enable = true;
         breadcrumbs = {
           enable = true;
