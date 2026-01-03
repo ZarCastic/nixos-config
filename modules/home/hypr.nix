@@ -115,6 +115,10 @@ in {
           "$mod, k, movefocus, u"
           "$mod, j, movefocus, d"
           "$mod, f, fullscreen,"
+          "$mod SHIFT, h, movewindow, l"
+          "$mod SHIFT, l, movewindow, r"
+          "$mod SHIFT, k, movewindow, u"
+          "$mod SHIFT, j, movewindow, d"
         ]
         ++ workspaces;
       bindm = [
