@@ -119,12 +119,26 @@ in {
           "$mod SHIFT, l, movewindow, r"
           "$mod SHIFT, k, movewindow, u"
           "$mod SHIFT, j, movewindow, d"
+          "$mod, r, submap, resize"
         ]
         ++ workspaces;
       bindm = [
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
       ];
+    };
+    submaps = {
+      resize = {
+        settings = {
+          binde = [
+            ", h, resizeactive, -10 0"
+            ", l, resizeactive, 10 0"
+            ", j, resizeactive, 0 10"
+            ", k, resizeactive, 0 -10"
+            ", Escape, submap, reset"
+          ];
+        };
+      };
     };
   };
 
