@@ -111,7 +111,9 @@ in {
         [
           "$mod SHIFT, E, exit,"
           "$mod SHIFT, Q, killactive,"
-          "$mod, V, exec, cliphist list | wofi --dmenu --pre-display-cmd \"echo '%s' | cut -f 2\" | cliphist decode | wl-copy"
+          "$mod, V, exec, dms ipc call clipboard toggle"
+          "$mod, N, exec, dms ipc call notifications toggle"
+          "$mod, o, exec, dms ipc call hypr toggleOverview"
           "$mod, Return, exec, $terminal"
           "$mod, Space, togglefloating,"
           "$mod, D, exec, $menu"
@@ -125,6 +127,7 @@ in {
           "$mod SHIFT, k, movewindow, u"
           "$mod SHIFT, j, movewindow, d"
           "$mod, r, submap, resize"
+          "CTRL ALT, Q, exec, dms ipc call lock lock"
         ]
         ++ workspaces;
       bindm = [
