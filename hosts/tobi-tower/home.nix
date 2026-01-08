@@ -1,9 +1,4 @@
-{
-  pkgs,
-  ...
-}:
-
-{
+{pkgs, ...}: {
   home.username = "tobi";
   home.homeDirectory = "/home/tobi";
   home.stateVersion = "25.11";
@@ -37,7 +32,10 @@
     gcc.enable = true;
     ghostty = {
       enable = true;
-      package = if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
+      package =
+        if pkgs.stdenv.isDarwin
+        then pkgs.ghostty-bin
+        else pkgs.ghostty;
       enableZshIntegration = true;
       enableBashIntegration = true;
       enableFishIntegration = false;
@@ -49,7 +47,7 @@
     git = {
       enable = true;
       includes = [
-        { path = "~/.gitconfig.local"; }
+        {path = "~/.gitconfig.local";}
       ];
     };
     lazygit.enable = true;
@@ -66,6 +64,15 @@
           showStartupLaunchMessage = false;
           useGrimAdapter = true;
           disabledGrimWarning = true;
+        };
+      };
+    };
+
+    udiskie = {
+      enable = true;
+      settings = {
+        program_options = {
+          file_manager = "${pkgs.nemo-with-extensions}/bin/nemo";
         };
       };
     };

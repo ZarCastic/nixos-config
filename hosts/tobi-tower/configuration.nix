@@ -4,9 +4,7 @@
   dms,
   stylix,
   ...
-}:
-
-{
+}: {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -23,7 +21,10 @@
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
+
+  # auto mount drives
+  services.udisks2.enable = true;
 
   users.users.tobi = {
     isNormalUser = true;
@@ -38,7 +39,7 @@
   fonts.packages = with pkgs; [
     monaspace
   ];
-  environment.pathsToLink = [ "/share/zsh" ]; # for completions
+  environment.pathsToLink = ["/share/zsh"]; # for completions
 
   programs.firefox.enable = true;
 
@@ -94,6 +95,7 @@
     hyprpaper
     kitty
     libnotify
+    nemo
     networkmanager-openvpn
     networkmanagerapplet
     pavucontrol
@@ -109,5 +111,4 @@
     wireguard-tools
     wofi
   ];
-
 }

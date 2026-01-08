@@ -93,6 +93,7 @@ in {
         "proton-pass"
         "wl-paste --watch cliphist store"
         "tmux start-server"
+        "udiskie"
       ];
       general = {
         gaps_in = 5;
