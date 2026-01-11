@@ -1,15 +1,18 @@
-{lib, ...}: let
+{
+  lib,
+  config,
+  ...
+}: let
   aliases = import ./aliases.nix;
 in {
   programs.zsh = {
     enable = true;
-    enableCompletion = true;
-    autosuggestion = {
-      enable = true;
-      strategy = ["match_prev_cmd"];
-    };
+    enableCompletion = false;
+    autosuggestion.enable = false;
     syntaxHighlighting.enable = true;
     autocd = true;
+    dotDir = "${config.xdg.configHome}/zsh";
+
     cdpath = [
       "$HOME"
       "$HOME/projects"
@@ -28,7 +31,6 @@ in {
       ignoreSpace = true;
       saveNoDups = true;
     };
-    historySubstringSearch.enable = true;
     siteFunctions = {
       mkcd = ''
         mkdir -p "$1" && cd "$1"
@@ -39,6 +41,20 @@ in {
       aliases.nixos_aliases
       aliases.sanity_aliases
     ];
+    prezto = {
+      enable = true;
+      pmodules = [
+        "history-substring-search"
+        "autosuggestions"
+        "environment"
+        "terminal"
+        "history"
+        "directory"
+        "spectrum"
+        "utility"
+        "completion"
+      ];
+    };
   };
   programs.starship = {
     enable = true;
