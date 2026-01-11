@@ -2,7 +2,7 @@
   config,
   pkgs,
   dms,
-  stylix,
+  zen-browser,
   ...
 }: {
   imports = [
@@ -110,5 +110,6 @@
     wget
     wireguard-tools
     wofi
+    zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }
