@@ -4,7 +4,10 @@ in {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    autosuggestion.enable = true;
+    autosuggestion = {
+      enable = true;
+      strategy = ["match_prev_cmd"];
+    };
     syntaxHighlighting.enable = true;
     autocd = true;
     cdpath = [
@@ -16,6 +19,7 @@ in {
     };
     history = {
       append = true;
+      extended = true;
       share = true;
       expireDuplicatesFirst = true;
       ignoreAllDups = true;
@@ -24,6 +28,7 @@ in {
       ignoreSpace = true;
       saveNoDups = true;
     };
+    historySubstringSearch.enable = true;
     siteFunctions = {
       mkcd = ''
         mkdir -p "$1" && cd "$1"
