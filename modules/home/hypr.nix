@@ -98,6 +98,7 @@ in {
         "wl-paste --watch cliphist store"
         "tmux start-server"
         "udiskie"
+        "[workspace special silent] obsidian"
       ];
       general = {
         gaps_in = 5;
@@ -128,11 +129,19 @@ in {
           "$mod SHIFT, j, movewindow, d"
           "$mod, r, submap, resize"
           "CTRL ALT, Q, exec, dms ipc call lock lock"
+          "$mod SHIFT, code:20, movetoworkspace, special" # bind "SUPER SHIFT -"
+          "$mod, code:20, togglespecialworkspace" # bind "SUPER -"
         ]
         ++ workspaces;
       bindm = [
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
+      ];
+      windowrule = [
+        "workspace special, class:obsidian"
+      ];
+      workspace = [
+        "special, persistent:true, shadow:true, gapsout:50, on-created-empty:obsidian"
       ];
     };
     submaps = {
