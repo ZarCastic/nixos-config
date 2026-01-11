@@ -158,6 +158,10 @@
         minimap-vim.enable = false;
         codewindow.enable = true; # lighter, faster, and uses lua for configuration
       };
+      mini = {
+        files.enable = true;
+        icons.enable = true;
+      };
 
       dashboard = {
         dashboard-nvim.enable = false;
@@ -180,7 +184,7 @@
         qmk-nvim.enable = false; # requires hardware specific options
         icon-picker.enable = true;
         surround.enable = true;
-        oil-nvim.enable = true;
+        oil-nvim.enable = false;
         leetcode-nvim.enable = false;
         multicursors.enable = true;
         smart-splits.enable = true;
@@ -198,7 +202,7 @@
       };
 
       notes = {
-        # obsidian.enable = true;
+        obsidian.enable = false; # currently breaks build?
         neorg.enable = false;
         orgmode.enable = false;
         mind-nvim.enable = false;
@@ -256,6 +260,49 @@
       comments = {
         comment-nvim.enable = true;
       };
+
+      options = {
+        exrc = true;
+        scrolloff = 25;
+        sidescroll = 0;
+        shiftwidth = 4;
+        tabstop = 4;
+        wrap = false;
+      };
+
+      keymaps = [
+        {
+          key = "<enter>";
+          mode = "n";
+          silent = false;
+          action = ":noh<cr>:w<cr>";
+        }
+        # buffers
+        {
+          key = "<S-h>";
+          mode = "n";
+          action = "<cmd>bprevious<cr>";
+        }
+        # olimorris/codecompanion
+        {
+          key = "<leader>ac";
+          mode = "n";
+          action = "<esc>:CodeCompanionChat Toggle<cr>";
+          desc = "Toggle CodeCompanionChat";
+        }
+        {
+          key = "<leader>ap";
+          action = "<esc>:CodeCompanionActions<cr>";
+          mode = "n";
+          desc = "Show CodeCompanionActions";
+        }
+        {
+          key = "<leader>aa";
+          action = "<esc>:CodeCompanion #{buffer}";
+          mode = "n";
+          desc = "Inline CodeCompanion for buffer";
+        }
+      ];
     };
   };
 }

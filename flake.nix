@@ -23,6 +23,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # nixvim = {
+    #   url = "github:nix-community/nixvim";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,6 +38,7 @@
     nixpkgs,
     home-manager,
     nvf,
+    # nixvim,
     dms,
     stylix,
     zen-browser,
@@ -50,6 +56,7 @@
         stylix.nixosModules.stylix
         nvf.nixosModules.default
         ./modules/nvf
+        # nixvim.homeModules.nixvim
         home-manager.nixosModules.home-manager
         {
           home-manager = {

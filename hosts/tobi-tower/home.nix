@@ -13,6 +13,7 @@
     ./../../modules/home/obsidian
     ./../../modules/home/zsh
     ./../../modules/home/tmux
+    # ./../../modules/home/nixvim
   ];
 
   programs = {
