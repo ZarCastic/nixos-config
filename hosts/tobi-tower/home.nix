@@ -18,6 +18,7 @@
 
   programs = {
     bat.enable = true;
+    bemenu.enable = true;
     btop.enable = true;
     delta = {
       enable = true;
@@ -27,6 +28,7 @@
       enable = true;
       enableZshIntegration = true;
     };
+    discord.enable = true;
     eza.enable = true;
     fd.enable = true;
     fzf.enable = true;

@@ -9,7 +9,12 @@
     };
 
     dms = {
-      url = "github:AvengeMedia/DankMaterialShell/stable";
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/quickshell/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -39,6 +44,7 @@
     home-manager,
     nvf,
     # nixvim,
+    quickshell,
     dms,
     stylix,
     zen-browser,
@@ -49,6 +55,7 @@
       specialArgs = {
         inherit dms;
         inherit zen-browser;
+        inherit quickshell;
       };
       modules = [
         ./hosts/tobi-tower/configuration.nix
@@ -60,9 +67,9 @@
         home-manager.nixosModules.home-manager
         {
           home-manager = {
-            extraSpecialArgs = {
-              inherit dms;
-            };
+            # extraSpecialArgs = {
+            #   inherit dms;
+            # };
             useGlobalPkgs = true;
             useUserPackages = true;
             users.tobi = import ./hosts/tobi-tower/home.nix;

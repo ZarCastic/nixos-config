@@ -1,6 +1,6 @@
 {
   pkgs,
-  dms,
+  # dms,
   ...
 }: let
   workspaces = builtins.concatLists (
@@ -18,9 +18,9 @@
     10
   );
 in {
-  imports = [
-    dms.homeModules.dankMaterialShell.default
-  ];
+  # imports = [
+  #   dms.homeModules.dank-material-shell.default
+  # ];
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -138,7 +138,7 @@ in {
         "$mod, mouse:273, resizewindow"
       ];
       windowrule = [
-        "workspace special, class:obsidian"
+        "match:class obsidian, workspace special"
       ];
       workspace = [
         "special, persistent:true, shadow:true, gapsout:50, on-created-empty:obsidian"
@@ -159,23 +159,21 @@ in {
     };
   };
 
-  programs = {
-    dankMaterialShell = {
-      enable = true;
-      default.settings = {
-        systemd = {
-          enable = true;
-          restartIfChanged = true;
-        };
-        systemMonitoring = true;
-        clipboard = true;
-        VPN = true;
-        dynamicTheming = false;
-        audioWavelength = true;
-        calendarEvents = true;
-      };
-    };
-    discord.enable = true;
-    bemenu.enable = true;
-  };
+  # programs = {
+  #   dank-material-shell = {
+  #     enable = true;
+  #     settings = {
+  #       systemd = {
+  #         enable = true;
+  #         restartIfChanged = true;
+  #       };
+  #       systemMonitoring = true;
+  #       clipboard = true;
+  #       VPN = true;
+  #       dynamicTheming = false;
+  #       audioWavelength = true;
+  #       calendarEvents = true;
+  #     };
+  #   };
+  # };
 }
