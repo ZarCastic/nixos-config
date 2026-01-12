@@ -2,9 +2,11 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   aliases = import ./aliases.nix;
-in {
+in
+{
   programs.zsh = {
     enable = true;
     enableCompletion = false;
@@ -18,7 +20,7 @@ in {
       "$HOME/projects"
     ];
     sessionVariables = {
-      PATH = "$PATH:$HOME/Scripts:$HOME/bin";
+      PATH = "$PATH:$HOME/.cargo/bin:$HOME/Scripts:$HOME/bin";
     };
     history = {
       append = true;
