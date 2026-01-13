@@ -67,8 +67,7 @@ in
       master = {
         allow_small_split = true;
         new_status = "inherit";
-        orientation = "center";
-        center_master_fallback = "right";
+        orientation = "right";
       };
       input = {
         kb_layout = "eu";
