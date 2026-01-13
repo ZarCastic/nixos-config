@@ -53,6 +53,12 @@
     ripgrep.enable = true;
   };
 
+  users.defaultUserShell = pkgs.zsh;
+  fonts.packages = with pkgs; [
+    monaspace
+  ];
+  environment.pathsToLink = [ "/share/zsh" ]; # for completions
+
   services = {
     cliphist.enable = true;
     flameshot = {

@@ -26,12 +26,6 @@
   };
   services.xserver.videoDrivers = [ "nvidia" ];
 
-  users.defaultUserShell = pkgs.zsh; # TODO should be managed by home-manager
-  fonts.packages = with pkgs; [
-    monaspace
-  ];
-  environment.pathsToLink = [ "/share/zsh" ]; # for completions
-
   # core programs
   programs = {
     firefox.enable = true;
