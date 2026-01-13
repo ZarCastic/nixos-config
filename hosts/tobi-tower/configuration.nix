@@ -139,4 +139,6 @@
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     nixvim.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
+
+  virtualisation.vmware.host.enable = true;
 }
