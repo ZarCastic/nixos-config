@@ -1,6 +1,5 @@
 {
   pkgs,
-  # dms,
   ...
 }:
 let
@@ -22,9 +21,6 @@ let
   );
 in
 {
-  # imports = [
-  #   dms.homeModules.dank-material-shell.default
-  # ];
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -161,21 +157,4 @@ in
     };
   };
 
-  # programs = {
-  #   dank-material-shell = {
-  #     enable = true;
-  #     settings = {
-  #       systemd = {
-  #         enable = true;
-  #         restartIfChanged = true;
-  #       };
-  #       systemMonitoring = true;
-  #       clipboard = true;
-  #       VPN = true;
-  #       dynamicTheming = false;
-  #       audioWavelength = true;
-  #       calendarEvents = true;
-  #     };
-  #   };
-  # };
 }
