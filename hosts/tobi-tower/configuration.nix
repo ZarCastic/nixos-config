@@ -9,6 +9,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos
+    ../../modules/nixos/gaming.nix
   ];
 
   networking.hostName = "tobi-tower";
@@ -30,16 +31,6 @@
     firefox.enable = true;
     zsh.enable = true;
   };
-
-  # gaming
-  programs.steam = {
-    enable = true;
-    localNetworkGameTransfers.openFirewall = true;
-    extraCompatPackages = with pkgs; [
-      proton-ge-bin
-    ];
-  };
-  programs.gamemode.enable = true;
 
   environment.systemPackages = with pkgs; [
     cargo
