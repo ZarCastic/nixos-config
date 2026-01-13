@@ -31,38 +31,39 @@
     nixvim.url = "github:ZarCastic/NixVim";
   };
 
-  outputs = {
-    nixpkgs,
-    home-manager,
-    quickshell,
-    dms,
-    stylix,
-    nixvim,
-    zen-browser,
-    ...
-  }: {
-    nixosConfigurations.tobi-tower = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {
-        inherit dms;
-        inherit zen-browser;
-        inherit quickshell;
-        inherit nixvim;
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      quickshell,
+      dms,
+      stylix,
+      nixvim,
+      zen-browser,
+      ...
+    }:
+    {
+      nixosConfigurations.tobi-tower = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit dms;
+          inherit zen-browser;
+          inherit quickshell;
+          inherit nixvim;
+          inherit stylix;
+        };
+        modules = [
+          ./hosts/tobi-tower/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.tobi = import ./hosts/tobi-tower/home.nix;
+              backupFileExtension = "backup";
+            };
+          }
+        ];
       };
-      modules = [
-        ./hosts/tobi-tower/configuration.nix
-        ./modules/nixos
-        stylix.nixosModules.stylix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.tobi = import ./hosts/tobi-tower/home.nix;
-            backupFileExtension = "backup";
-          };
-        }
-      ];
     };
-  };
 }

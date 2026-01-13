@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./hypr.nix
+  ];
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -13,9 +17,6 @@
     options = "--delete-older-than 30d";
   };
 
-  # never change
-  system.stateVersion = "25.11";
-
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -28,4 +29,31 @@
   networking.firewall.checkReversePath = false;
 
   time.timeZone = "Europe/Berlin";
+
+  # auto mount drives
+  services.udisks2.enable = true;
+
+  # user default groups
+  users.users.tobi = {
+    isNormalUser = true;
+    extraGroups = [
+      "wheel" # allow sudo
+      "networkmanager" # required for vpn
+    ];
+  };
+
+  services.gnome.gnome-keyring.enable = true;
+
+  virtualisation.vmware.host.enable = true;
+  virtualisation.virtualbox = {
+    host.enable = true;
+    guest = {
+      enable = true;
+      dragAndDrop = true;
+    };
+  };
+  users.extraGroups.vboxusers.members = [ "tobi" ];
+
+  # never change
+  system.stateVersion = "25.11";
 }
