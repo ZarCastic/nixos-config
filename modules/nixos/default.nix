@@ -64,9 +64,7 @@
   environment.systemPackages = with pkgs; [
     libnotify
     nemo
-    networkmanager-openvpn
     pavucontrol
-    wireguard-tools
     cargo
     dex
     git

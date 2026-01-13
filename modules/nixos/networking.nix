@@ -9,4 +9,9 @@
     };
     firewall.checkReversePath = false;
   };
+
+  environment.systemPackages = with pkgs; [
+    networkmanager-openvpn
+    wireguard-tools
+  ];
 }
