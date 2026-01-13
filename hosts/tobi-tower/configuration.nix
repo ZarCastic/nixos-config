@@ -10,7 +10,6 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos
-    stylix.nixosModules.stylix
   ];
 
   networking.hostName = "tobi-tower";

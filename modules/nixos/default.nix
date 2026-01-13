@@ -2,6 +2,7 @@
 {
   imports = [
     ./hypr.nix
+    ./stylix.nix
   ];
 
   nix.settings.experimental-features = [
