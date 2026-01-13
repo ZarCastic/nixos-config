@@ -9,12 +9,10 @@
   ];
 
   imports = [
-    # ./../../modules/home/common.nix
     ./../../modules/home/hypr.nix
     ./../../modules/home/obsidian
     ./../../modules/home/zsh
     ./../../modules/home/tmux
-    # ./../../modules/home/nixvim
   ];
 
   programs = {

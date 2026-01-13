@@ -54,6 +54,14 @@
   };
   users.extraGroups.vboxusers.members = [ "tobi" ];
 
+  environment.systemPackages = with pkgs; [
+    libnotify
+    nemo
+    networkmanager-openvpn
+    pavucontrol
+    wireguard-tools
+  ];
+
   # never change
   system.stateVersion = "25.11";
 }
