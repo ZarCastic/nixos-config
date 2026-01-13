@@ -100,7 +100,6 @@ in
       exec-once = [
         "protonvpn-app"
         "wl-paste --watch cliphist store"
-        "tmux start-server"
         "udiskie"
         "[workspace special silent] obsidian"
       ];
