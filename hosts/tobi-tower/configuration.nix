@@ -115,30 +115,33 @@
   environment.systemPackages = with pkgs; [
     cargo
     git
-    hyprpaper
-    kitty
-    libnotify
-    nemo
-    networkmanager-openvpn
-    networkmanagerapplet
-    pavucontrol
-    proton-pass
-    protonvpn-gui
-    signal-desktop
-    statix
-    alejandra
-    nixfmt
-    spotify
+    kitty # terminal
+    libnotify # notifications
+    nemo # files
+    networkmanager-openvpn # vpn
+    pavucontrol # sound
+    proton-pass # PW Manager
+    protonvpn-gui # vpn
+    signal-desktop # chat
+    statix # editor
+    alejandra # editor
+    nixfmt # editor
+    spotify # music
     tree
     vim
-    waybar
-    wezterm
     wget
-    wireguard-tools
-    wofi
+    wireguard-tools # vpn
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     nixvim.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   virtualisation.vmware.host.enable = true;
+  virtualisation.virtualbox = {
+    host.enable = true;
+    guest = {
+      enable = true;
+      dragAndDrop = true;
+    };
+  };
+  users.extraGroups.vboxusers.members = [ "tobi" ];
 }
