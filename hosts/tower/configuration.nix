@@ -1,5 +1,6 @@
 {
   config,
+  hostname,
   ...
 }:
 {
@@ -9,7 +10,7 @@
     ../../modules/nixos/gaming.nix
   ];
 
-  networking.hostName = "tobi-tower";
+  networking.hostName = "${hostname}";
 
   # nvidia/specifics for tower
   hardware = {
@@ -25,5 +26,4 @@
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
-
 }

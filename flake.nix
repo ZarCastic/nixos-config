@@ -42,11 +42,13 @@
       zen-browser,
       ...
     }:
+
     let
       username = "tobi";
+      hostname = "tobi-tower";
     in
     {
-      nixosConfigurations.tobi-tower = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
           inherit dms;
@@ -55,15 +57,16 @@
           inherit nixvim;
           inherit stylix;
           inherit username;
+          inherit hostname;
         };
         modules = [
-          ./hosts/tobi-tower/configuration.nix
+          ./hosts/tower/configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.${username} = import ./hosts/tobi-tower/home.nix;
+              users.${username} = import ./hosts/tower/home.nix;
               extraSpecialArgs = { inherit username; };
               backupFileExtension = "backup";
             };
