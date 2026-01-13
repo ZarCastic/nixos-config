@@ -75,6 +75,37 @@
               }
             ];
           };
+
+        "tobi-work" =
+          with {
+            username = "tobi";
+            hostname = "tobi-work";
+          };
+          nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = {
+              inherit dms;
+              inherit zen-browser;
+              inherit quickshell;
+              inherit nixvim;
+              inherit stylix;
+              inherit username;
+              inherit hostname;
+            };
+            modules = [
+              ./hosts/work/configuration.nix
+              home-manager.nixosModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  users.${username} = import ./hosts/work/home.nix;
+                  extraSpecialArgs = { inherit username; };
+                  backupFileExtension = "backup";
+                };
+              }
+            ];
+          };
       };
     };
 }

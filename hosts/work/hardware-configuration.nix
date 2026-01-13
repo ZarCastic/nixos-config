@@ -1,0 +1,7 @@
+{
+  ...
+}:
+
+{
+  # hw config goes here
+}
