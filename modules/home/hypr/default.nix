@@ -93,7 +93,6 @@ in
       "$terminal" = "ghostty";
       "$menu" = "bemenu-run";
       exec-once = [
-        "protonvpn-app"
         "wl-paste --watch cliphist store"
         "udiskie"
         "[workspace special silent] obsidian"
