@@ -99,7 +99,6 @@ in
       "$menu" = "bemenu-run";
       exec-once = [
         "protonvpn-app"
-        "proton-pass"
         "wl-paste --watch cliphist store"
         "tmux start-server"
         "udiskie"
