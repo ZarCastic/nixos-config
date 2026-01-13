@@ -114,8 +114,8 @@
 
   environment.systemPackages = with pkgs; [
     cargo
+    dex
     git
-    kitty # terminal
     libnotify # notifications
     nemo # files
     networkmanager-openvpn # vpn
