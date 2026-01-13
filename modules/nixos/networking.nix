@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
   networking = {
     networkmanager = {
@@ -14,4 +14,13 @@
     networkmanager-openvpn
     wireguard-tools
   ];
+
+  # user default groups
+  users = {
+    users.${username} = {
+      extraGroups = [
+        "networkmanager" # required for vpn
+      ];
+    };
+  };
 }
