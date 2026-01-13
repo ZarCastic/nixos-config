@@ -4,8 +4,10 @@
   quickshell,
   dms,
   zen-browser,
+  nixvim,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
   ];
@@ -22,7 +24,7 @@
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   # auto mount drives
   services.udisks2.enable = true;
@@ -40,7 +42,7 @@
   fonts.packages = with pkgs; [
     monaspace
   ];
-  environment.pathsToLink = ["/share/zsh"]; # for completions
+  environment.pathsToLink = [ "/share/zsh" ]; # for completions
 
   programs.firefox.enable = true;
 
@@ -62,17 +64,17 @@
     enable = true;
 
     systemd = {
-      enable = true;             # Systemd service for auto-start
-      restartIfChanged = true;   # Auto-restart dms.service when dms-shell changes
+      enable = true; # Systemd service for auto-start
+      restartIfChanged = true; # Auto-restart dms.service when dms-shell changes
     };
-    
+
     # Core features
-    enableSystemMonitoring = true;     # System monitoring widgets (dgop)
-    enableClipboard = true;            # Clipboard history manager
-    enableVPN = true;                  # VPN management widget
-    enableDynamicTheming = true;       # Wallpaper-based theming (matugen)
-    enableAudioWavelength = true;      # Audio visualizer (cava)
-    enableCalendarEvents = true;       # Calendar integration (khal)
+    enableSystemMonitoring = true; # System monitoring widgets (dgop)
+    enableClipboard = true; # Clipboard history manager
+    enableVPN = true; # VPN management widget
+    enableDynamicTheming = true; # Wallpaper-based theming (matugen)
+    enableAudioWavelength = true; # Audio visualizer (cava)
+    enableCalendarEvents = true; # Calendar integration (khal)
 
     quickshell.package = quickshell.packages.${pkgs.stdenv.hostPlatform.system}.quickshell;
     package = dms.packages.${pkgs.stdenv.hostPlatform.system}.default;
@@ -123,6 +125,9 @@
     proton-pass
     protonvpn-gui
     signal-desktop
+    statix
+    alejandra
+    nixfmt
     spotify
     tree
     vim
@@ -132,5 +137,6 @@
     wireguard-tools
     wofi
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    nixvim.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

@@ -27,6 +27,8 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixvim.url = "github:ZarCastic/NixVim";
   };
 
   outputs = {
@@ -35,6 +37,7 @@
     quickshell,
     dms,
     stylix,
+    nixvim,
     zen-browser,
     ...
   }: {
@@ -44,6 +47,7 @@
         inherit dms;
         inherit zen-browser;
         inherit quickshell;
+        inherit nixvim;
       };
       modules = [
         ./hosts/tobi-tower/configuration.nix
