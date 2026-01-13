@@ -10,7 +10,7 @@
   };
 
   imports = [
-    ./hypr.nix
+    ./hypr
     ./obsidian
     ./zsh
     ./tmux.nix
