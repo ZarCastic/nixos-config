@@ -2,12 +2,14 @@
   pkgs,
   nixvim,
   zen-browser,
+  username,
   ...
 }:
 {
   imports = [
     ./hypr.nix
     ./stylix.nix
+    ./networking.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -31,21 +33,11 @@
     efi.canTouchEfiVariables = true;
   };
 
-  networking = {
-    networkmanager = {
-      enable = true;
-      plugins = with pkgs; [
-        networkmanager-openvpn
-      ];
-    };
-    firewall.checkReversePath = false;
-  };
-
   time.timeZone = "Europe/Berlin";
 
   # user default groups
   users = {
-    users.tobi = {
+    users.${username} = {
       isNormalUser = true;
       extraGroups = [
         "wheel" # allow sudo

@@ -2,6 +2,7 @@
   config,
   lib,
   modulesPath,
+  username,
   ...
 }:
 
@@ -40,28 +41,28 @@
     ];
   };
 
-  fileSystems."/home/tobi/projects" = {
+  fileSystems."/home/${username}/projects" = {
     device = "/dev/disk/by-label/PROJECTS";
     fsType = "ext4";
     options = [ "nofail" ];
   };
 
-  fileSystems."/home/tobi/games" = {
+  fileSystems."/home/${username}/games" = {
     device = "/dev/disk/by-label/GAMES";
     fsType = "ext4";
     options = [ "nofail" ];
   };
 
-  fileSystems."/home/tobi/data" = {
+  fileSystems."/home/${username}/data" = {
     device = "/dev/disk/by-label/DataDisk";
     fsType = "ntfs";
     options = [ "nofail" ];
   };
 
   systemd.tmpfiles.rules = [
-    "d /home/tobi/projects 0755 tobi users -"
-    "d /home/tobi/games 0755 tobi users -"
-    "d /home/tobi/data 0755 tobi users -"
+    "d /home/${username}/projects 0755 ${username} users -"
+    "d /home/${username}/games 0755 ${username} users -"
+    "d /home/${username}/data 0755 ${username} users -"
   ];
 
   swapDevices = [

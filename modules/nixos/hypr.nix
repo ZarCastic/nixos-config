@@ -2,6 +2,7 @@
   quickshell,
   dms,
   pkgs,
+  username,
   ...
 }:
 {
@@ -14,7 +15,7 @@
   services.displayManager.dms-greeter = {
     enable = true;
     compositor.name = "hyprland";
-    configHome = "/home/tobi";
+    configHome = "/home/${username}";
     quickshell.package = quickshell.packages.${pkgs.stdenv.hostPlatform.system}.quickshell;
     package = dms.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
