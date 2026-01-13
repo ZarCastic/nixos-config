@@ -1,8 +1,10 @@
 { pkgs, ... }:
 {
-  home.username = "tobi";
-  home.homeDirectory = "/home/tobi";
-  home.stateVersion = "25.11";
+  home = {
+    username = "tobi";
+    homeDirectory = "/home/tobi";
+    stateVersion = "25.11";
+  };
 
   home.packages = [
     pkgs.wl-clipboard
@@ -52,12 +54,6 @@
     lazygit.enable = true;
     ripgrep.enable = true;
   };
-
-  users.defaultUserShell = pkgs.zsh;
-  fonts.packages = with pkgs; [
-    monaspace
-  ];
-  environment.pathsToLink = [ "/share/zsh" ]; # for completions
 
   services = {
     cliphist.enable = true;

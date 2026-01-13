@@ -3,7 +3,6 @@
   pkgs,
   zen-browser,
   nixvim,
-  stylix,
   ...
 }:
 {

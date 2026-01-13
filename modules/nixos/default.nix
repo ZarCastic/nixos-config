@@ -35,13 +35,21 @@
   services.udisks2.enable = true;
 
   # user default groups
-  users.users.tobi = {
-    isNormalUser = true;
-    extraGroups = [
-      "wheel" # allow sudo
-      "networkmanager" # required for vpn
-    ];
+  users = {
+    users.tobi = {
+      isNormalUser = true;
+      extraGroups = [
+        "wheel" # allow sudo
+        "networkmanager" # required for vpn
+        "vboxusers" # virtualbox
+      ];
+    };
+    defaultUserShell = pkgs.zsh;
   };
+  fonts.packages = with pkgs; [
+    monaspace
+  ];
+  environment.pathsToLink = [ "/share/zsh" ]; # for completions
 
   services.gnome.gnome-keyring.enable = true;
 
@@ -53,7 +61,6 @@
       dragAndDrop = true;
     };
   };
-  users.extraGroups.vboxusers.members = [ "tobi" ];
 
   environment.systemPackages = with pkgs; [
     libnotify
