@@ -9,6 +9,7 @@
     ../../modules/nixos
     ../../modules/nixos/gaming.nix
     ../../modules/nixos/protonvpn.nix
+    ../../modules/nixos/powermanagement.nix
   ];
 
   networking.hostName = "${hostname}";
