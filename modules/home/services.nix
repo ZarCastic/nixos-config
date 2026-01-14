@@ -1,7 +1,10 @@
 { pkgs, ... }:
 {
   services = {
+    # clipboard history
     cliphist.enable = true;
+
+    # screenshots
     flameshot = {
       enable = true;
       settings = {
@@ -13,6 +16,7 @@
       };
     };
 
+    # auto mount disks
     udiskie = {
       enable = true;
       settings = {
@@ -20,6 +24,12 @@
           file_manager = "${pkgs.nemo-with-extensions}/bin/nemo";
         };
       };
+    };
+
+    # monitor management
+    kanshi = {
+      enable = true;
+      systemdTarget = "hyprland-session.target";
     };
   };
 }

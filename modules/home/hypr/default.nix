@@ -28,7 +28,6 @@ in
     package = pkgs.hyprland;
 
     settings = {
-      "monitor" = "DP-2,1920x1080@144.00Hz,auto,1";
       binds = {
         allow_workspace_cycles = true;
         workspace_back_and_forth = true;
