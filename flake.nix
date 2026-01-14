@@ -91,7 +91,6 @@
               inherit dms;
               inherit zen-browser;
               inherit nixvim;
-              inherit stylix;
               inherit username;
               inherit hostname;
               inherit quickshell;
@@ -107,6 +106,7 @@
                   extraSpecialArgs = {
                     inherit username;
                     inherit dms;
+                    inherit stylix;
                     inherit quickshell;
                   };
                   backupFileExtension = "backup";
@@ -126,7 +126,6 @@
               inherit dms;
               inherit zen-browser;
               inherit nixvim;
-              inherit stylix;
               inherit username;
               inherit hostname;
               inherit quickshell;
@@ -141,6 +140,7 @@
                   users.${username} = import ./hosts/thinkpad/home.nix;
                   extraSpecialArgs = {
                     inherit username;
+                    inherit stylix;
                     inherit dms;
                     inherit quickshell;
                   };
