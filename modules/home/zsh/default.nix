@@ -56,6 +56,7 @@ in
         "utility"
         "completion"
       ];
+      utility.safeOps = false;
     };
   };
   programs.starship = {
