@@ -1,28 +1,29 @@
 {
-  pkgs,
   nixvim,
+  pkgs,
   zen-browser,
   ...
 }:
 {
   environment.systemPackages = with pkgs; [
-    libnotify
-    nemo
-    pavucontrol
+    alejandra # nix lint editor
     cargo
     dex
     git
+    libnotify
+    nemo
+    nixfmt # editor
+    nixvim.packages.${pkgs.stdenv.hostPlatform.system}.default
+    pavucontrol
     proton-pass # PW Manager
     signal-desktop # chat
-    statix # nix lint editor
-    alejandra # nix lint editor
-    nixfmt # editor
     spotify # music
+    statix # nix lint editor
     tree
+    usbutils
     vim
     wget
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default # -> home-manager
-    nixvim.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # core programs
