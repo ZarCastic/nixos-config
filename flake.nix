@@ -8,11 +8,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/quickshell/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,6 +23,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/quickshell/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixvim.url = "github:ZarCastic/NixVim";
   };
 
@@ -35,10 +35,10 @@
     {
       nixpkgs,
       home-manager,
-      quickshell,
       dms,
       stylix,
       nixvim,
+      quickshell,
       zen-browser,
       ...
     }:
@@ -55,11 +55,11 @@
             specialArgs = {
               inherit dms;
               inherit zen-browser;
-              inherit quickshell;
               inherit nixvim;
               inherit stylix;
               inherit username;
               inherit hostname;
+              inherit quickshell;
             };
             modules = [
               ./hosts/tower/configuration.nix
@@ -69,7 +69,11 @@
                   useGlobalPkgs = true;
                   useUserPackages = true;
                   users.${username} = import ./hosts/tower/home.nix;
-                  extraSpecialArgs = { inherit username; };
+                  extraSpecialArgs = {
+                    inherit username;
+                    inherit dms;
+                    inherit quickshell;
+                  };
                   backupFileExtension = "backup";
                 };
               }
@@ -86,11 +90,11 @@
             specialArgs = {
               inherit dms;
               inherit zen-browser;
-              inherit quickshell;
               inherit nixvim;
               inherit stylix;
               inherit username;
               inherit hostname;
+              inherit quickshell;
             };
             modules = [
               ./hosts/work/configuration.nix
@@ -100,7 +104,11 @@
                   useGlobalPkgs = true;
                   useUserPackages = true;
                   users.${username} = import ./hosts/work/home.nix;
-                  extraSpecialArgs = { inherit username; };
+                  extraSpecialArgs = {
+                    inherit username;
+                    inherit dms;
+                    inherit quickshell;
+                  };
                   backupFileExtension = "backup";
                 };
               }

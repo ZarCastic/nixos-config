@@ -1,5 +1,7 @@
 {
   pkgs,
+  dms,
+  quickshell,
   ...
 }:
 let
@@ -21,10 +23,16 @@ let
   );
 in
 {
+  imports = [
+    dms.homeModules.dank-material-shell
+  ];
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    systemd.enable = true;
+    systemd = {
+      enable = true;
+      variables = [ "--all" ];
+    };
     package = pkgs.hyprland;
 
     settings = {
@@ -152,6 +160,25 @@ in
         };
       };
     };
+  };
+
+  programs.dank-material-shell = {
+    enable = true;
+
+    systemd = {
+      enable = true; # Systemd service for auto-start
+      restartIfChanged = true; # Auto-restart dms.service when dms-shell changes
+    };
+
+    # Core features
+    enableSystemMonitoring = true; # System monitoring widgets (dgop)
+    enableClipboardPaste = true; # Clipboard history manager
+    enableVPN = true; # VPN management widget
+    enableDynamicTheming = true; # Wallpaper-based theming (matugen)
+    enableAudioWavelength = true; # Audio visualizer (cava)
+    enableCalendarEvents = true; # Calendar integration (khal)
+
+    quickshell.package = quickshell.packages.${pkgs.stdenv.hostPlatform.system}.quickshell;
   };
 
 }
