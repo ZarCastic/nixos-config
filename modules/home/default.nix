@@ -17,5 +17,6 @@
     ./terminal.nix
     ./programs.nix
     ./services.nix
+    ./stylix.nix
   ];
 }

@@ -56,7 +56,6 @@
               inherit dms;
               inherit zen-browser;
               inherit nixvim;
-              inherit stylix;
               inherit username;
               inherit hostname;
               inherit quickshell;
@@ -73,6 +72,7 @@
                     inherit username;
                     inherit dms;
                     inherit quickshell;
+                    inherit stylix;
                   };
                   backupFileExtension = "backup";
                 };
@@ -115,7 +115,6 @@
             ];
           };
 
-	  
         "tobi-thinkpad" =
           with {
             username = "tobi";

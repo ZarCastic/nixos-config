@@ -1,7 +1,7 @@
 { pkgs, stylix, ... }:
 {
   imports = [
-    stylix.nixosModules.stylix
+    stylix.homeModules.stylix
   ];
   stylix = {
     enable = true;

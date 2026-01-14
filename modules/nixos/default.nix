@@ -6,7 +6,6 @@
 {
   imports = [
     ./hypr.nix
-    ./stylix.nix
     ./networking.nix
     ./virtualisation.nix
     ./programs.nix
