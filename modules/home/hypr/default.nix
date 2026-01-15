@@ -102,7 +102,6 @@ in
       exec-once = [
         "wl-paste --watch cliphist store"
         "udiskie"
-        "[workspace special silent] obsidian"
       ];
       general = {
         gaps_in = 5;

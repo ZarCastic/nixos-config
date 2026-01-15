@@ -11,7 +11,6 @@
 
   imports = [
     ./hypr
-    ./obsidian
     ./zsh
     ./tmux.nix
     ./terminal.nix
