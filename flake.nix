@@ -28,17 +28,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
     nixvim.url = "github:ZarCastic/NixVim";
   };
 
   outputs =
     {
-      nixpkgs,
-      home-manager,
       dms,
-      stylix,
+      home-manager,
+      nixpkgs,
       nixvim,
       quickshell,
+      spicetify-nix,
+      stylix,
       zen-browser,
       ...
     }:
@@ -59,6 +62,7 @@
               inherit username;
               inherit hostname;
               inherit quickshell;
+              inherit spicetify-nix;
             };
             modules = [
               ./hosts/tower/configuration.nix
@@ -94,6 +98,7 @@
               inherit username;
               inherit hostname;
               inherit quickshell;
+              inherit spicetify-nix;
             };
             modules = [
               ./hosts/work/configuration.nix
@@ -129,6 +134,7 @@
               inherit username;
               inherit hostname;
               inherit quickshell;
+              inherit spicetify-nix;
             };
             modules = [
               ./hosts/thinkpad/configuration.nix

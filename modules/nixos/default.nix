@@ -9,6 +9,7 @@
     ./networking.nix
     ./virtualisation.nix
     ./programs.nix
+    ./spicetify.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
