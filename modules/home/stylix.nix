@@ -11,7 +11,9 @@
         enable = true;
         vaultNames = [ "Notes" ];
       };
-      zen-browser.enable = true;
+      zen-browser = {
+        enable = true;
+      };
     };
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/ashes.yaml";
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-mirage.yaml";

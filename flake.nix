@@ -19,7 +19,15 @@
     };
 
     zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
+
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -36,6 +44,7 @@
   outputs =
     {
       dms,
+      firefox-addons,
       home-manager,
       nixpkgs,
       nixvim,
@@ -57,7 +66,6 @@
             system = "x86_64-linux";
             specialArgs = {
               inherit dms;
-              inherit zen-browser;
               inherit nixvim;
               inherit username;
               inherit hostname;
@@ -76,6 +84,8 @@
                     inherit username;
                     inherit dms;
                     inherit quickshell;
+                    inherit zen-browser;
+                    inherit firefox-addons;
                     inherit stylix;
                   };
                   backupFileExtension = "backup";
@@ -93,7 +103,6 @@
             system = "x86_64-linux";
             specialArgs = {
               inherit dms;
-              inherit zen-browser;
               inherit nixvim;
               inherit username;
               inherit hostname;
@@ -112,7 +121,9 @@
                     inherit username;
                     inherit dms;
                     inherit stylix;
+                    inherit firefox-addons;
                     inherit quickshell;
+                    inherit zen-browser;
                   };
                   backupFileExtension = "backup";
                 };
@@ -129,7 +140,6 @@
             system = "x86_64-linux";
             specialArgs = {
               inherit dms;
-              inherit zen-browser;
               inherit nixvim;
               inherit username;
               inherit hostname;
@@ -147,6 +157,8 @@
                   extraSpecialArgs = {
                     inherit username;
                     inherit stylix;
+                    inherit zen-browser;
+                    inherit firefox-addons;
                     inherit dms;
                     inherit quickshell;
                   };

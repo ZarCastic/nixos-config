@@ -17,5 +17,6 @@
     ./programs.nix
     ./services.nix
     ./stylix.nix
+    ./zen-browser.nix
   ];
 }

@@ -10,7 +10,6 @@
     ./virtualisation.nix
     ./programs.nix
     ./spicetify.nix
-    ./zen-browser.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
