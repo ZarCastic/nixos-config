@@ -1,21 +1,9 @@
 { pkgs, stylix, ... }:
 {
-  imports = [
-    stylix.homeModules.stylix
-  ];
+  imports = [ stylix.nixosModules.stylix ];
   stylix = {
     enable = true;
     autoEnable = true;
-    targets = {
-      obsidian = {
-        enable = true;
-        vaultNames = [ "Notes" ];
-      };
-      zen-browser = {
-        enable = true;
-        profileNames = [ "default" ];
-      };
-    };
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/ashes.yaml";
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-mirage.yaml";
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/banana-blueberry.yaml";
