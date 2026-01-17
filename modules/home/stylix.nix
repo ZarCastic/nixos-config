@@ -6,6 +6,7 @@
   stylix = {
     enable = true;
     autoEnable = true;
+    polarity = "dark";
     targets = {
       obsidian = {
         enable = true;
