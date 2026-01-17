@@ -12,6 +12,7 @@
       defaultSettings = {
         corePlugins = [
           "backlink"
+          "bases"
           "bookmarks"
           "canvas"
           "command-palette"
@@ -34,7 +35,6 @@
           "sync"
           "tag-pane"
           "templates"
-          "word-count"
           "workspaces"
           "zk-prefixer"
         ];
@@ -52,6 +52,10 @@
             pkg = pkgs.callPackage ./simple-todo.nix { };
           }
         ];
+        app = {
+          "attachmentFolderPath" = "Attachments";
+          "alwaysUpdateLinks" = true;
+        };
       };
       vaults = {
         Notes = {

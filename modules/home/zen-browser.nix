@@ -56,6 +56,20 @@
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "@nx" ]; # Keep in mind that aliases defined here only work if they start with "@"
           };
+          home-manager-options = {
+            name = "Home Manager Options";
+            urls = [
+              {
+                template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master";
+                params = [
+                  {
+                    name = "query";
+                    value = "searchTerms";
+                  }
+                ];
+              }
+            ];
+          };
         };
       };
       settings = {
