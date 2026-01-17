@@ -60,7 +60,7 @@
       };
       settings = {
         "browser.tags.warnOnClose" = false;
-
+        "zen.workspaces.continue-where-left-off" = true;
       };
     };
   };
