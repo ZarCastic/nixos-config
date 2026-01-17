@@ -1,7 +1,6 @@
 {
   nixvim,
   pkgs,
-  zen-browser,
   ...
 }:
 {
@@ -23,7 +22,6 @@
     usbutils
     vim
     wget
-    zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default # -> home-manager
   ];
 
   # core programs
