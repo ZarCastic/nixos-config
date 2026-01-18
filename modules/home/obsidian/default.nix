@@ -59,6 +59,20 @@
           "attachmentFolderPath" = "Attachments";
           "alwaysUpdateLinks" = true;
         };
+        hotkeys = {
+          zk-prefixer = [
+            {
+              modifiers = [ "Alt" ];
+              key = "N";
+            }
+          ];
+          insert-template = [
+            {
+              modifiers = [ "Alt" ];
+              key = "T";
+            }
+          ];
+        };
       };
       vaults = {
         Notes = {
