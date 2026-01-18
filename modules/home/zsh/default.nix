@@ -19,6 +19,9 @@ in
       "$HOME"
       "$HOME/projects"
     ];
+    envExtra = ''
+      [ -f ${config.xdg.configHome}/zsh/environment ] && source ${config.xdg.configHome}/zsh/environment
+    '';
     sessionVariables = {
       PATH = "$PATH:$HOME/.cargo/bin:$HOME/Scripts:$HOME/bin";
     };
