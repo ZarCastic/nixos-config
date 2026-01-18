@@ -141,10 +141,10 @@ in
         "$mod, mouse:273, resizewindow"
       ];
       windowrule = [
-        "match:class obsidian, workspace special"
+        "match:class Spotify, workspace 7"
       ];
       workspace = [
-        "special, persistent:true, shadow:true, gapsout:50, on-created-empty:obsidian"
+        "special, persistent:true, shadow:true, gapsout:50"
       ];
     };
     submaps = {

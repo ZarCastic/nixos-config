@@ -4,6 +4,9 @@
     exec-once = [
       "[workspace special silent] obsidian"
     ];
+    windowrule = [
+      "match:class obsidian, workspace special"
+    ];
   };
 
   programs = {
