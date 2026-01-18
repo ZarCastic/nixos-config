@@ -11,12 +11,13 @@
 
   imports = [
     ./hypr
-    ./zsh
-    ./tmux.nix
-    ./terminal.nix
+    ./obsidian
     ./programs.nix
     ./services.nix
     ./stylix.nix
+    ./terminal.nix
+    ./tmux.nix
     ./zen-browser.nix
+    ./zsh
   ];
 }
