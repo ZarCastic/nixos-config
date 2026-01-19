@@ -32,6 +32,7 @@
       extensions.packages = with firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
         ublock-origin
         proton-pass
+        bitwarden
         vimium
       ];
       search = {
