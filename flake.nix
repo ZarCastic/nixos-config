@@ -156,11 +156,48 @@
                   users.${username} = import ./hosts/thinkpad/home.nix;
                   extraSpecialArgs = {
                     inherit username;
-                    inherit stylix;
-                    inherit zen-browser;
-                    inherit firefox-addons;
                     inherit dms;
+                    inherit stylix;
+                    inherit firefox-addons;
                     inherit quickshell;
+                    inherit zen-browser;
+                  };
+                  backupFileExtension = "backup";
+                };
+              }
+            ];
+          };
+
+        "LW-00001" =
+          with {
+            username = "tobi";
+            hostname = "LW-00001";
+          };
+          nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = {
+              inherit dms;
+              inherit nixvim;
+              inherit username;
+              inherit hostname;
+              inherit quickshell;
+              inherit spicetify-nix;
+            };
+            modules = [
+              ./hosts/dell/configuration.nix
+              home-manager.nixosModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  users.${username} = import ./hosts/dell/home.nix;
+                  extraSpecialArgs = {
+                    inherit username;
+                    inherit dms;
+                    inherit stylix;
+                    inherit firefox-addons;
+                    inherit quickshell;
+                    inherit zen-browser;
                   };
                   backupFileExtension = "backup";
                 };
