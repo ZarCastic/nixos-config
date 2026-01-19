@@ -48,12 +48,6 @@
           {
             pkg = pkgs.callPackage ./git.nix { };
           }
-          {
-            pkg = pkgs.callPackage ./rollover-daily-todos.nix { };
-          }
-          {
-            pkg = pkgs.callPackage ./simple-todo.nix { };
-          }
         ];
         app = {
           "attachmentFolderPath" = "Attachments";
