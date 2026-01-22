@@ -23,7 +23,7 @@ in
       [ -f ${config.xdg.configHome}/zsh/environment ] && source ${config.xdg.configHome}/zsh/environment
     '';
     sessionVariables = {
-      PATH = "$PATH:$HOME/.cargo/bin:$HOME/Scripts:$HOME/bin";
+      PATH = "$PATH:$HOME/.cargo/bin:$HOME/go/bin:$HOME/Scripts:$HOME/bin";
     };
     history = {
       append = true;
