@@ -16,6 +16,29 @@
 
   networking.hostName = "${hostname}";
 
+  # Load nvidia driver for Xorg and Wayland
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware = {
+    graphics = {
+      enable = true;
+    };
+    nvidia = {
+      # Modesetting is required.
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+
+      open = true; # turing and later, we are on ada-lovelace
+      nvidiaSettings = true;
+
+      prime = {
+        sync.enable = true; # we use sync mode for now
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:1:0:0";
+      };
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     thunderbird
   ];
