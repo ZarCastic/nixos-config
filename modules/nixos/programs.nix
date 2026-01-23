@@ -9,6 +9,7 @@
     cargo
     dex
     git
+    keymapp
     libnotify
     nemo
     nixfmt # editor
