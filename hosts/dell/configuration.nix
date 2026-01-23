@@ -32,7 +32,7 @@
       nvidiaSettings = true;
 
       prime = {
-        sync.enable = true; # we use sync mode for now
+        offload.enable = true; # we use sync mode for now
         intelBusId = "PCI:0:2:0";
         nvidiaBusId = "PCI:1:0:0";
       };
