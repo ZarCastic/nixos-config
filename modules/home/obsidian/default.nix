@@ -52,6 +52,7 @@
         app = {
           "attachmentFolderPath" = "Attachments";
           "alwaysUpdateLinks" = true;
+          "vimMode" = true;
         };
         hotkeys = {
           zk-prefixer = [
