@@ -1,4 +1,5 @@
 {
+  pkgs,
   hostname,
   ...
 }:
@@ -14,4 +15,8 @@
     "/dev/disk/by-uuid/5d12f2b1-766f-45a6-847c-ad23b23cbedc";
 
   networking.hostName = "${hostname}";
+
+  environment.systemPackages = with pkgs; [
+    thunderbird
+  ];
 }
