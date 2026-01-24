@@ -24,6 +24,7 @@ in
     '';
     sessionVariables = {
       PATH = "$PATH:$HOME/.cargo/bin:$HOME/go/bin:$HOME/Scripts:$HOME/bin";
+      EDITOR = "nvim";
     };
     history = {
       append = true;
