@@ -14,6 +14,7 @@
     ./obsidian
     ./programs.nix
     ./services.nix
+    ./terminal.nix
     ./stylix.nix
     ./tmux.nix
     ./zen-browser.nix

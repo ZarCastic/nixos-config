@@ -1,10 +1,12 @@
+{ lib, ... }:
 {
   programs = {
     foot = {
       enable = true;
+      server.enable = true;
       settings = {
         main = {
-          font = "Monaspace Xenon Var:size=11";
+          font = lib.mkForce "Monaspace Xenon Var:size=11";
         };
         scrollback = {
           lines = 100000;
