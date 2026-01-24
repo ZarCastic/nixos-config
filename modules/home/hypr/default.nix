@@ -108,7 +108,6 @@ in
       exec-once = [
         "wl-paste --watch cliphist store"
         "udiskie"
-        "foot --server"
       ];
       general = {
         gaps_in = 5;
