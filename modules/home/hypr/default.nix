@@ -98,16 +98,17 @@ in
         ];
       };
       misc = {
-        disable_autoreload = true;
+        disable_autoreload = false;
         force_default_wallpaper = 0;
         vrr = 1;
       };
       "$mod" = "SUPER";
-      "$terminal" = "ghostty";
+      "$terminal" = "footclient";
       "$menu" = "bemenu-run";
       exec-once = [
         "wl-paste --watch cliphist store"
         "udiskie"
+        "foot --server"
       ];
       general = {
         gaps_in = 5;
@@ -152,6 +153,12 @@ in
       workspace = [
         "special, persistent:true, shadow:true, gapsout:50"
       ];
+      env = [
+        "QT_QPA_PLATFORM,wayland"
+        "ELECTRON_OZONE_PLATFORM_HINT,auto"
+        "QT_QPA_PLATFORMTHEME,gtk3"
+        "QT_QPA_PLATFORMTHEME_QT6,gtk3"
+      ];
     };
     submaps = {
       resize = {
@@ -166,6 +173,9 @@ in
         };
       };
     };
+    extraConfig = ''
+      source = ~/.config/hypr/dms/*
+    '';
   };
 
   programs.dank-material-shell = {

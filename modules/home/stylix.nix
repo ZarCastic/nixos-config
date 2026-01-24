@@ -21,6 +21,7 @@
         enable = true;
         profileNames = [ "default" ];
       };
+      foot.enable = true;
     };
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/ashes.yaml";
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-mirage.yaml";

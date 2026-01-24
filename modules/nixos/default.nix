@@ -11,6 +11,7 @@
     ./programs.nix
     ./spicetify.nix
     ./hardware.nix
+    ./terminal.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
