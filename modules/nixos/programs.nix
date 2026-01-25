@@ -22,12 +22,27 @@
     tree
     usbutils
     vim
+    vivaldi
     wget
   ];
 
   # core programs
   programs = {
-    firefox.enable = true;
     zsh.enable = true;
+    chromium = {
+      enable = true;
+      extraOpts = {
+        "ExtensionInstallForcelist" = [
+          # uBlock Origin lite
+          "ddkjiahejlhfcafbddmgiahcphecmpfh;https://clients2.google.com/service/update2/crx"
+          # Bitwarden
+          "nngceckbapebfimnlniiiahkandclblb;https://clients2.google.com/service/update2/crx"
+          # proton pass
+          "ghmbeldphafepmbegfdlkpapadhbakde;https://clients2.google.com/service/update2/crx"
+          # vimium
+          "dbepggeogbaibhgnhhndojpepiihcmeb;https://clients2.google.com/service/update2/crx"
+        ];
+      };
+    };
   };
 }

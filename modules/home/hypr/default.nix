@@ -139,7 +139,6 @@ in
         "CTRL ALT, Q, exec, dms ipc call lock lock"
         "$mod SHIFT, code:20, movetoworkspace, special" # bind "SUPER SHIFT -"
         "$mod, code:20, togglespecialworkspace" # bind "SUPER -"
-        "$mod, b, exec, zen-twilight"
       ]
       ++ workspaces;
       bindm = [
