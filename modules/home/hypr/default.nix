@@ -148,6 +148,7 @@ in
       ];
       windowrule = [
         "match:class Spotify, workspace 7"
+        "match:class signal, workspace 7"
       ];
       workspace = [
         "special, persistent:true, shadow:true, gapsout:50"
