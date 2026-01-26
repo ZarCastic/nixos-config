@@ -13,6 +13,7 @@
     keymapp
     libnotify
     nemo
+    networkmanagerapplet
     nixfmt # editor
     nixvim.packages.${pkgs.stdenv.hostPlatform.system}.default
     pavucontrol

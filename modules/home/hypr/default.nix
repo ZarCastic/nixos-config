@@ -110,6 +110,7 @@ in
       "$menu" = "bemenu-run";
       exec-once = [
         "wl-paste --watch cliphist store"
+        "waybar"
         "udiskie"
       ];
       general = {
@@ -256,6 +257,127 @@ in
             valign = "top";
           }
         ];
+      };
+    };
+    waybar = {
+      enable = true;
+      systemd.target = "hyprland-session.target";
+      settings.main = {
+        margin-bottom = -10;
+        spacing = 0;
+        modules-left = [
+          "hyprland/workspaces"
+          "hyprland/window"
+        ];
+        modules-center = [ "clock" ];
+        modules-right = [
+          "cpu"
+          "memory"
+          "bluetooth"
+          "network"
+          "pulseaudio"
+          "battery"
+          "tray"
+        ];
+        "hyprland/workspaces" = {
+          "format" = "{name}: {icon}";
+          "format-icons" = {
+            "active" = "";
+            "default" = "";
+          };
+        };
+        "bluetooth" = {
+          "format" = "󰂲";
+          "format-on" = "{icon}";
+          "format-off" = "{icon}";
+          "format-connected" = "{icon}";
+          "format-icons" = {
+            "on" = "󰂯";
+            "off" = "󰂲";
+            "connected" = "󰂱";
+          };
+          "on-click" = "blueman-manager";
+          "tooltip-format-connected" = "{device_enumerate}";
+        };
+        "custom/music" = {
+          "format" = "  {}";
+          "escape" = true;
+          "interval" = 5;
+          "tooltip" = false;
+          "exec" = "playerctl metadata --format='{{ artist }} - {{ title }}'";
+          "on-click" = "playerctl play-pause";
+          "max-length" = 50;
+        };
+        "clock" = {
+          "timezone" = "Europe/Berlin";
+          "tooltip" = false;
+          "format" = "{:%H:%M:%S  -  %A, %d}";
+          "interval" = 1;
+        };
+        "network" = {
+          "format-wifi" = "󰤢";
+          "format-ethernet" = "󰈀 ";
+          "format-disconnected" = "󰤠 ";
+          "interval" = 5;
+          "tooltip-format" = "{essid} ({signalStrength}%)";
+          "on-click" = "nm-connection-editor";
+        };
+        "cpu" = {
+          "interval" = 1;
+          "format" = "  {icon0}{icon1}{icon2}{icon3} {usage:>2}%";
+          "format-icons" = [
+            "▁"
+            "▂"
+            "▃"
+            "▄"
+            "▅"
+            "▆"
+            "▇"
+            "█"
+          ];
+          "on-click" = "footclient -e btop";
+        };
+        "memory" = {
+          "interval" = 30;
+          "format" = "  {used:0.1f}G/{total:0.1f}G";
+          "tooltip-format" = "Memory";
+        };
+        "pulseaudio" = {
+          "format" = "{icon}  {volume}%";
+          "format-muted" = "";
+          "format-icons" = {
+            "default" = [
+              ""
+              ""
+              " "
+            ];
+          };
+          "on-click" = "pavucontrol";
+        };
+        "battery" = {
+          "interval" = 2;
+          "states" = {
+            "warning" = 30;
+            "critical" = 15;
+          };
+          "format" = "{icon}  {capacity}%";
+          "format-full" = "{icon}  {capacity}%";
+          "format-charging" = " {capacity}%";
+          "format-plugged" = " {capacity}%";
+          "format-alt" = "{icon} {time}";
+          "format-icons" = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
+        };
+        "custom/lock" = {
+          "tooltip" = false;
+          "on-click" = "sh -c '(sleep 0s; hyprlock)' & disown";
+          "format" = "";
+        };
       };
     };
     dank-material-shell = {
