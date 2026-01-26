@@ -175,9 +175,6 @@ in
         };
       };
     };
-    extraConfig = ''
-      source = ~/.config/hypr/dms/*
-    '';
   };
 
   programs = {
