@@ -9,6 +9,7 @@
     cargo
     dex
     git
+    hyprlock
     keymapp
     libnotify
     nemo

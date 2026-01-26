@@ -1,6 +1,7 @@
 {
   pkgs,
   dms,
+  lib,
   quickshell,
   ...
 }:
@@ -179,23 +180,102 @@ in
     '';
   };
 
-  programs.dank-material-shell = {
-    enable = true;
+  programs = {
+    hyprlock = {
+      enable = true;
+      settings = {
+        "$font" = "Monaspace Xenon Var";
+        general = {
+          hide_cursor = false;
+        };
 
-    systemd = {
-      enable = true; # Systemd service for auto-start
-      restartIfChanged = true; # Auto-restart dms.service when dms-shell changes
+        animations = {
+          enabled = true;
+          bezier = "linear, 1, 1, 0, 0";
+
+          animation = [
+            "fadeIn, 1, 5, linear"
+            "fadeOut, 1, 5, linear"
+            "inputFieldDots, 1, 2, linear"
+          ];
+        };
+
+        background = {
+          monitor = "";
+          path = "screenshot";
+          blur_passes = "3";
+        };
+
+        input-field = {
+          monitor = "";
+          size = "20%, 5%";
+          outline_thickness = "3";
+          inner_color = lib.mkForce "rgba(0, 0, 0, 0.0)"; # no fill
+
+          outer_color = lib.mkForce "rgba(33ccffee) rgba(00ff99ee) 45deg";
+          check_color = lib.mkForce "rgba(00ff99ee) rgba(ff6633ee) 120deg";
+          fail_color = lib.mkForce "rgba(ff6633ee) rgba(ff0066ee) 40deg";
+
+          font_color = lib.mkForce "rgb(143, 143, 143)";
+          fade_on_empty = false;
+          rounding = 15;
+
+          font_family = "$font";
+          placeholder_text = "Input password...";
+          fail_text = "$PAMFAIL";
+
+          dots_spacing = 0.3;
+
+          position = "0, -20";
+          halign = "center";
+          valign = "center";
+        };
+
+        # TIME
+        label = [
+          {
+            monitor = "";
+            text = "$TIME";
+            font_size = "90";
+            font_family = "$font";
+
+            position = "-30, 0";
+            halign = "right";
+            valign = "top";
+          }
+
+          # DATE
+          {
+            monitor = "";
+            text = "cmd[update:60000] date +\"%A, %d %B %Y\""; # update every 60 seconds
+            font_size = 25;
+            font_family = "$font";
+
+            position = "-30, -150";
+            halign = "right";
+            valign = "top";
+          }
+        ];
+      };
     };
+    dank-material-shell = {
+      enable = true;
 
-    # Core features
-    enableSystemMonitoring = true; # System monitoring widgets (dgop)
-    enableClipboardPaste = true; # Clipboard history manager
-    enableVPN = true; # VPN management widget
-    enableDynamicTheming = false; # Wallpaper-based theming (matugen)
-    enableAudioWavelength = true; # Audio visualizer (cava)
-    enableCalendarEvents = true; # Calendar integration (khal)
+      systemd = {
+        enable = true; # Systemd service for auto-start
+        restartIfChanged = true; # Auto-restart dms.service when dms-shell changes
+      };
 
-    quickshell.package = quickshell.packages.${pkgs.stdenv.hostPlatform.system}.quickshell;
+      # Core features
+      enableSystemMonitoring = true; # System monitoring widgets (dgop)
+      enableClipboardPaste = true; # Clipboard history manager
+      enableVPN = true; # VPN management widget
+      enableDynamicTheming = false; # Wallpaper-based theming (matugen)
+      enableAudioWavelength = true; # Audio visualizer (cava)
+      enableCalendarEvents = true; # Calendar integration (khal)
+
+      quickshell.package = quickshell.packages.${pkgs.stdenv.hostPlatform.system}.quickshell;
+    };
   };
 
 }
