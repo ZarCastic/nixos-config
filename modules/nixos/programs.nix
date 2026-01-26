@@ -19,7 +19,6 @@
     signal-desktop # chat
     spotify # music
     statix # nix lint editor
-    swaylock
     tree
     usbutils
     vim
