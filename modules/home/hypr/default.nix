@@ -89,6 +89,12 @@ in
           clickfinger_behavior = true;
         };
       };
+      cursor = {
+        zoom_factor = 0;
+        zoom_rigid = false;
+        use_cpu_buffer = true;
+        no_hardware_cursors = false;
+      };
       animations = {
         enabled = true;
         animation = [
