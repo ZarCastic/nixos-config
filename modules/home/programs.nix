@@ -20,7 +20,7 @@
       includes = [
         { path = "~/.gitconfig.local"; }
       ];
-      config = {
+      settings = {
         push = {
           autoSetupRemote = true;
         };
