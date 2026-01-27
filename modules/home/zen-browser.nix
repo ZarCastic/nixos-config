@@ -37,7 +37,7 @@
       ];
       search = {
         force = true; # Needed for nix to overwrite search settings on rebuild
-        default = "ddg"; # Aliased to duckduckgo, see other aliases in the link above
+        default = "kagi"; # Aliased to duckduckgo, see other aliases in the link above
         engines = {
           # My nixos Option and package search shortcut
           mynixos = {
@@ -62,6 +62,21 @@
             urls = [
               {
                 template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master";
+                params = [
+                  {
+                    name = "query";
+                    value = "searchTerms";
+                  }
+                ];
+              }
+            ];
+          };
+
+          kagi = {
+            name = "kagi";
+            urls = [
+              {
+                template = "https://kagi.com/search?q={searchTerms}";
                 params = [
                   {
                     name = "query";
