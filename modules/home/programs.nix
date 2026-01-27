@@ -20,6 +20,14 @@
       includes = [
         { path = "~/.gitconfig.local"; }
       ];
+      config = {
+        push = {
+          autoSetupRemote = true;
+        };
+        core = {
+          editor = "nvim";
+        };
+      };
     };
     lazygit.enable = true;
     ripgrep.enable = true;
