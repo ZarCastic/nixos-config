@@ -39,6 +39,8 @@
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
     nixvim.url = "github:ZarCastic/NixVim";
+
+    flk.url = "github:AEduardo-dev/flk";
   };
 
   outputs =
@@ -47,6 +49,7 @@
       firefox-addons,
       home-manager,
       nixpkgs,
+      flk,
       nixvim,
       quickshell,
       spicetify-nix,
@@ -68,6 +71,7 @@
               inherit dms;
               inherit nixvim;
               inherit username;
+              inherit flk;
               inherit hostname;
               inherit quickshell;
               inherit spicetify-nix;
@@ -105,6 +109,7 @@
               inherit dms;
               inherit nixvim;
               inherit username;
+              inherit flk;
               inherit hostname;
               inherit quickshell;
               inherit spicetify-nix;
@@ -141,6 +146,7 @@
             specialArgs = {
               inherit dms;
               inherit nixvim;
+              inherit flk;
               inherit username;
               inherit hostname;
               inherit quickshell;
@@ -178,6 +184,7 @@
             specialArgs = {
               inherit dms;
               inherit nixvim;
+              inherit flk;
               inherit username;
               inherit hostname;
               inherit quickshell;

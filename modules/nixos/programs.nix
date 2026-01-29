@@ -1,6 +1,7 @@
 {
   nixvim,
   pkgs,
+  flk,
   ...
 }:
 {
@@ -15,6 +16,7 @@
     nemo
     nixfmt # editor
     nixvim.packages.${pkgs.stdenv.hostPlatform.system}.default
+    flk.packages.${pkgs.stdenv.hostPlatform.system}.flk
     pavucontrol
     proton-pass # PW Manager
     signal-desktop # chat
