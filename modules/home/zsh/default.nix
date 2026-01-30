@@ -21,6 +21,7 @@ in
     ];
     envExtra = ''
       [ -f ${config.xdg.configHome}/zsh/environment ] && source ${config.xdg.configHome}/zsh/environment
+      [ -z flk ] && eval "$(flk hook zsh)"
     '';
     sessionVariables = {
       PATH = "$PATH:$HOME/.cargo/bin:$HOME/go/bin:$HOME/Scripts:$HOME/bin";
